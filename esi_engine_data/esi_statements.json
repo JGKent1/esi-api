@@ -1,0 +1,282 @@
+{
+  "bank_version": "esi_statements@0.1.0",
+  "note": "Student statement bank for the ESI Brief. Release-safety rules apply: no clinical language, no verdicts, no career prediction, no 'at risk'. Every line addresses the student directly.",
+  "band_note": "This is a starting position, not a verdict. You will take this again in Week 15, and the number that matters is what moved.",
+  "pressure_intro": "Five scenarios were shown to you twice — once with time, information and privacy, and once with the clock running and people watching. The difference between how you answered is the gap between your judgment on the page and your judgment in the room. Closing that distance is what this term is for.",
+  "pressure_readings": {
+    "wide": "That is a wide gap, and it is the most useful thing this assessment can tell you. You reason well when you have room. The work of this term is making that reasoning survive conditions that do not give you room.",
+    "moderate": "That is a normal gap for someone at your stage, and it is workable. You lose some quality under compression but not all of it.",
+    "narrow": "That is a narrow gap, which is unusual. Your judgment holds up close to as well under pressure as it does with time. Protect that, and spend the term pushing the ceiling rather than the floor.",
+    "inverted": "Your compressed answers scored higher than your composed ones. That happens to people who overthink when given room. Worth a conversation — the fix is different from everyone else's."
+  },
+  "pressure_domain_note": {
+    "LS": "Under compression, self-management is the first thing you lose. That usually shows up as reacting before you have registered what you are reacting to.",
+    "LT": "Under compression, you handle people less well than you do with time. Speed comes out of the relationship rather than out of the task.",
+    "LC": "Under compression, structure is the first thing you drop. You stop sequencing and start doing whatever is nearest.",
+    "LP": "Under compression, your decision discipline gives way. That is the gap that matters most in the work you say you want.",
+    "LF": "Under compression, you stop updating. New information that would have changed your mind with time stops landing."
+  },
+  "tendency_note": "None of these is better than its opposite. They describe how you currently default, not who you are — and at your stage a default is still forming.",
+  "tendency_lines": {
+    "velocity": {
+      "pos_strong": "Strongly decisive: you close decisions fast and treat an unmade decision as its own cost.",
+      "pos_mod": "Leans decisive: you would rather have a made decision than a perfect one.",
+      "neg_mod": "Leans deliberate: you buy time and information before you commit.",
+      "neg_strong": "Strongly deliberate: your decisions wait for a complete picture, which is a strength until the picture will not arrive.",
+      "balanced": "Flexes between deliberate and decisive depending on the situation."
+    },
+    "information": {
+      "pos_strong": "Strongly intuitive: you read situations by pattern first and check the analysis after.",
+      "pos_mod": "Leans intuitive: you get a feel for a situation before you get the data on it.",
+      "neg_mod": "Leans analytical: evidence before instinct, most days.",
+      "neg_strong": "Strongly analytical: you trust the reasoning over the feel, even when the feel is right.",
+      "balanced": "Blends analysis and instinct without a strong default."
+    },
+    "orientation": {
+      "pos_strong": "Strongly people-first: relationships are the unit of work, and you solve through them.",
+      "pos_mod": "Leans people-first: you tend to solve problems through the people in them.",
+      "neg_mod": "Leans task-first: the work leads and relationships support it.",
+      "neg_strong": "Strongly task-first: outcomes over feelings, visibly.",
+      "balanced": "Moves between people and task depending on what the moment needs."
+    },
+    "risk": {
+      "pos_strong": "Strongly bold: you price the downside optimistically and move anyway.",
+      "pos_mod": "Leans bold: asymmetric upside pulls you harder than downside pushes you.",
+      "neg_mod": "Leans protective: you defend the downside first.",
+      "neg_strong": "Strongly protective: an opportunity has to get past your defensive instinct before you will take it.",
+      "balanced": "Prices risk situationally, without a strong personal bias."
+    },
+    "counsel": {
+      "pos_strong": "Strongly collaborative: your decisions gather people before they close.",
+      "pos_mod": "Leans collaborative: you think out loud and decide in company.",
+      "neg_mod": "Leans solo: you take counsel, then close the door.",
+      "neg_strong": "Strongly solo: the decision is yours alone, and the room usually finds out after.",
+      "balanced": "Gathers counsel widely but holds the decision personally."
+    }
+  },
+  "facet_labels": {
+    "ls.self_awareness": "Self-awareness",
+    "ls.emotional_regulation": "Emotional regulation",
+    "ls.bias_recognition": "Bias recognition",
+    "ls.discipline": "Discipline and follow-through",
+    "ls.operating_rhythm": "Operating rhythm",
+    "lt.trust_building": "Trust building",
+    "lt.psychological_safety": "Making it safe to speak",
+    "lt.talent_judgment": "Reading who can carry what",
+    "lt.communication": "Communication",
+    "lt.accountability": "Holding the standard",
+    "lc.systems_thinking": "Systems reading",
+    "lc.prioritization": "Prioritization",
+    "lc.change_leadership": "Leading change",
+    "lc.enterprise_alignment": "Aligning people you do not lead",
+    "lc.governance": "Decision rights and clarity",
+    "lp.judgment_under_stress": "Judgment under stress",
+    "lp.ethical_clarity": "Ethical clarity",
+    "lp.decision_architecture": "Decision architecture",
+    "lp.resilience": "Resilience",
+    "lf.strategic_imagination": "Strategic imagination",
+    "lf.ai_fluency": "AI fluency",
+    "lf.belief_revision": "Belief revision",
+    "lf.strategic_bets": "Committing ahead of certainty",
+    "lf.adaptability": "Adaptability"
+  },
+  "strengths": {
+    "_default": "This came out as one of your stronger areas. Use it as the platform for the harder work below rather than as a place to spend more time.",
+    "ls.self_awareness": "You can see yourself from the outside, which most people your age cannot yet do. That is the capacity everything else in this course is built on.",
+    "ls.emotional_regulation": "You stay level when the temperature rises. People will start bringing you things because of it, sooner than you expect.",
+    "ls.bias_recognition": "You catch your own thumb on the scale. That is rare and it is worth protecting deliberately.",
+    "ls.discipline": "You finish what you start. In a cohort where most good ideas die at eighty percent, that is a competitive advantage.",
+    "ls.operating_rhythm": "You have built a week that survives a bad week. Most people improvise until something breaks.",
+    "lt.trust_building": "People come to you early. That is not charm — it is a read on whether you will handle what you are told.",
+    "lt.psychological_safety": "People say true things around you. You have made that possible without noticing you did it.",
+    "lt.talent_judgment": "You read what people are actually good at rather than who is loudest. Lean on this when you build teams.",
+    "lt.communication": "People leave your conversations with the same understanding you had. That is much less common than it sounds.",
+    "lt.accountability": "You will say the uncomfortable thing to someone who needs to hear it. Do not let that get filed as being difficult.",
+    "lc.systems_thinking": "You see the machinery behind the behaviour instead of stopping at the person in front of you.",
+    "lc.prioritization": "You can say what does not get done. Most people can only say what does.",
+    "lc.change_leadership": "You move people through resistance rather than around it.",
+    "lc.enterprise_alignment": "You get people who do not answer to you moving in the same direction. That is the hardest thing on this list.",
+    "lc.governance": "You make decision rights explicit. It looks like bureaucracy and it is actually kindness.",
+    "lp.judgment_under_stress": "Your thinking holds its shape when conditions do not. That is the course's central claim and you already have some of it.",
+    "lp.ethical_clarity": "You know where your line is before you get near it, which is the only time knowing is useful.",
+    "lp.decision_architecture": "You decide how you will decide before you decide. That habit will carry a career.",
+    "lp.resilience": "You come back to full quality quickly after something goes badly. Note how — you will need to do it deliberately later.",
+    "lf.strategic_imagination": "You can see a version of the situation that does not exist yet.",
+    "lf.ai_fluency": "You use the tools on real work and you check them. That combination is rarer than either half.",
+    "lf.belief_revision": "You change your mind on evidence and say so out loud. Most people only do the first half.",
+    "lf.strategic_bets": "You commit before certainty and you know what would make you stop.",
+    "lf.adaptability": "You re-plan without needing permission when the plan stops working."
+  },
+  "vulnerabilities": {
+    "_default": "This came out low. Low here means little evidence, not a fixed limit — it is where the term's attention should go.",
+    "ls.self_awareness": "Your read on yourself and other people's read on you are probably not the same document. Go find the difference; do not wait for it to find you.",
+    "ls.emotional_regulation": "What you are feeling arrives in the room before you decide whether to send it. That is the most visible thing on this list to everyone but you.",
+    "ls.bias_recognition": "You are reasoning toward conclusions you already wanted. The tell is how rarely your analysis surprises you.",
+    "ls.discipline": "You start more than you finish. The cost is not the unfinished work — it is what people learn to expect.",
+    "ls.operating_rhythm": "Your week has no protected time, so the first hard week takes everything with it.",
+    "lt.trust_building": "People bring you problems late, once they are already everyone's problem. That is information about you, not about them.",
+    "lt.psychological_safety": "People are managing what they say around you. Quiet is not agreement.",
+    "lt.talent_judgment": "You read confidence as capability. They come apart at exactly the wrong moment.",
+    "lt.communication": "People leave your conversations with different versions of what was decided. Say the decision out loud, last, in one sentence.",
+    "lt.accountability": "You let things run past the point where saying something would have been easy. It never gets easier by waiting.",
+    "lc.systems_thinking": "Your analysis stops at the person. The structure that produced the behaviour is where the fix is.",
+    "lc.prioritization": "Everything is important, which means nothing is. Name what does not get done this week.",
+    "lc.change_leadership": "You announce change and expect it to travel. Resistance is information about your plan.",
+    "lc.enterprise_alignment": "You default to authority you do not have. Practise moving people who do not have to listen.",
+    "lc.governance": "Who decides what lives in your head. When you leave the room, it leaves with you.",
+    "lp.judgment_under_stress": "Your reasoning degrades faster than you notice under pressure. The Decision Labs will show you this in a way no journal can.",
+    "lp.ethical_clarity": "Your ethical reasoning bends under time pressure. Decide your line while it is cheap.",
+    "lp.decision_architecture": "You commit without knowing what would make you stop. That is how good people ride bad decisions all the way down.",
+    "lp.resilience": "One bad outcome costs you more than one day of quality. Watch the recovery, not the failure.",
+    "lf.strategic_imagination": "You reason inside the situation as given. Practise asking what would have to be true for it to be different.",
+    "lf.ai_fluency": "You are either avoiding the tools or trusting them. Both are the same mistake at different volumes.",
+    "lf.belief_revision": "New evidence rearranges your argument without changing your conclusion.",
+    "lf.strategic_bets": "You wait for certainty that is not coming, or commit without naming what would make you stop.",
+    "lf.adaptability": "When the plan breaks you keep executing it. Attachment to a plan is not commitment."
+  },
+  "development": {
+    "_default": "Pick one behaviour here, name the trigger, and make it verifiable by someone else by Friday.",
+    "ls.self_awareness": "Ask one person who works with you what you are getting wrong, and do not respond for twenty-four hours.",
+    "ls.emotional_regulation": "Name your three social-pressure triggers as observable events, not moods, and write what you will do in the first five seconds of each.",
+    "ls.bias_recognition": "Before your next decision that matters, write down what you want to be true, and treat that sentence as a warning.",
+    "ls.discipline": "Finish one thing you have been carrying at eighty percent before you start anything new.",
+    "ls.operating_rhythm": "Put two hours in your week that survive a bad week, and tell someone they exist.",
+    "lt.trust_building": "Find the person who tells you least and ask them one specific question you actually want answered.",
+    "lt.psychological_safety": "In your next group meeting, ask for the strongest objection to your own position before you defend it.",
+    "lt.talent_judgment": "Name what each person on your current team is genuinely best at, then check it against what they are actually doing.",
+    "lt.communication": "End every meeting you run by saying the decision out loud, in one sentence, and asking whether that is what everyone heard.",
+    "lt.accountability": "Have the conversation you have been avoiding this week. Name the specific behaviour, not the pattern.",
+    "lc.systems_thinking": "Before your next change, write down three things it will affect that nobody asked you about.",
+    "lc.prioritization": "Write your top three, then write what you are dropping to protect them.",
+    "lc.change_leadership": "Ask the person most resistant to your plan what they see that you do not.",
+    "lc.enterprise_alignment": "Get one thing done this month through someone who does not have to help you.",
+    "lc.governance": "Write down who decides what on your current team, and show it to them.",
+    "lp.judgment_under_stress": "In the next Decision Lab, take the twenty seconds to say your criteria out loud before you decide.",
+    "lp.ethical_clarity": "Write down, now, the thing you will not do — before a situation asks you.",
+    "lp.decision_architecture": "On your next commitment, write the kill criteria before you start, and give them to someone.",
+    "lp.resilience": "After the next thing that goes badly, note how long it takes you to be useful again. Then shorten it deliberately.",
+    "lf.strategic_imagination": "Take a situation you have accepted as fixed and write what would have to be true for it to change.",
+    "lf.ai_fluency": "Use a tool on real work this week and find one place it was wrong.",
+    "lf.belief_revision": "Find something you argued for last year that you no longer believe, and say so publicly.",
+    "lf.strategic_bets": "Name your biggest current commitment, what has to be true for it to work, and what would make you pull back.",
+    "lf.adaptability": "Next time a plan breaks, re-plan within twenty-four hours instead of defending the original."
+  },
+  "lab_path": {
+    "LS": "PressureLab composure series, plus the Week 6 Reception Room. Your strongest domain is also where your gap under compression will show first.",
+    "LT": "The Reception Room and the Week 9 peer correction round. Your instinct for people is real; the work is holding it when the room is difficult.",
+    "LC": "PressureLab triage series — compressed prioritization with two things failing at once. Structure is what you lose first under load.",
+    "LP": "PressureLab compressed-decision series and the Week 14 crisis lab. You are strong here on paper; the labs are where that gets tested.",
+    "LF": "The Week 11 Devil's Advocate Brief and the Weighing Room. Your openness needs an adversarial setting to become a discipline rather than a temperament."
+  },
+  "ethics_gate": "Your ethical clarity scored materially lower under compression than composed. That is the pattern the Weighing Room exists for, and it is worth a conversation before Week 5 rather than after.",
+  "archetypes": {
+    "_default": {
+      "name": "The Builder",
+      "narrative": "Your profile does not sit cleanly in one shape yet, which at this stage is normal and not a problem. Treat the domain scores above as the map."
+    },
+    "LS-LT": {
+      "name": "The Anchor",
+      "narrative": "You lead from a settled centre and people feel it before you say anything. Your risk is that steadiness becomes a place to hide from harder structural work."
+    },
+    "LS-LC": {
+      "name": "The Quiet Architect",
+      "narrative": "You manage yourself well and you see how things fit together. Your risk is doing both alone, in your head, where nobody can join you."
+    },
+    "LS-LP": {
+      "name": "The Steady Hand",
+      "narrative": "You hold your shape when things get hard, and that is the foundation of everything else. Your risk is mistaking composure for having actually decided."
+    },
+    "LS-LF": {
+      "name": "The Open Anchor",
+      "narrative": "You are unusually willing to be wrong and unusually steady while being told so. Your risk is that openness stays private and never becomes a team's property."
+    },
+    "LT-LS": {
+      "name": "The Multiplier",
+      "narrative": "You get more out of people than they expected to give, and you do it without performing. Your risk is that you carry others past the point where it helps them."
+    },
+    "LT-LC": {
+      "name": "The Connector",
+      "narrative": "You move people and you see the structure they are moving through. Your risk is over-engineering a problem that a direct conversation would have closed."
+    },
+    "LT-LP": {
+      "name": "The Crew Chief",
+      "narrative": "People trust you specifically when it is going badly, which is the version of trust that counts. Your risk is being the one who absorbs the pressure so nobody else learns to."
+    },
+    "LT-LF": {
+      "name": "The Recruiter",
+      "narrative": "You pull people toward things that do not exist yet. Your risk is momentum outrunning the plan and the plan never catching up."
+    },
+    "LC-LS": {
+      "name": "The Architect",
+      "narrative": "You see the machinery and you are disciplined about it. Your risk is that the system becomes more interesting to you than the people inside it."
+    },
+    "LC-LT": {
+      "name": "The Organizer",
+      "narrative": "You build structures that people actually use, which is rarer than building structures. Your risk is confusing a well-designed process with a decision."
+    },
+    "LC-LP": {
+      "name": "The Operator",
+      "narrative": "You sequence well and you hold that sequence when it is being tested. Your risk is optimizing a plan that should have been abandoned."
+    },
+    "LC-LF": {
+      "name": "The Systems Scout",
+      "narrative": "You read structure and you can imagine a different one. Your risk is redesigning faster than anyone can follow."
+    },
+    "LP-LS": {
+      "name": "The Stabilizer",
+      "narrative": "You get calmer as things get worse, and people will find that out about you early. Your risk is that nobody ever sees the cost, including you."
+    },
+    "LP-LT": {
+      "name": "The First Responder",
+      "narrative": "You move toward trouble and you bring people with you. Your risk is a bias for action that skips the twenty seconds of framing that would have made it work."
+    },
+    "LP-LC": {
+      "name": "The Incident Commander",
+      "narrative": "You decide under load and you keep the structure intact while you do it. Your risk is that you are best in a crisis and start needing one."
+    },
+    "LP-LF": {
+      "name": "The Improviser",
+      "narrative": "You hold up under pressure and you update while you are under it. Your risk is that the improvisation never gets written down for anyone else."
+    },
+    "LF-LS": {
+      "name": "The Pathfinder",
+      "narrative": "You look further ahead than your peers and you are honest with yourself about what you see. Your risk is that the horizon is more attractive than this week."
+    },
+    "LF-LT": {
+      "name": "The Evangelist",
+      "narrative": "You see what could be and you make other people want it. Your risk is selling a direction before you have tested it."
+    },
+    "LF-LC": {
+      "name": "The Designer",
+      "narrative": "You imagine the new arrangement and you can specify it. Your risk is that the second-order effects arrive after you have moved on."
+    },
+    "LF-LP": {
+      "name": "The Scout",
+      "narrative": "You go first, and you hold up when going first turns out to be hard. Your risk is committing before you have named what would make you turn back."
+    }
+  },
+  "counterpart": {
+    "LS": {
+      "intro": "The complement you need is an Anchor — someone whose self-management is settled, who does not need the situation to be calm in order to be calm.",
+      "partner": "Pair with the person who is unbothered when the deadline moves. Ask them to hold the tempo while you hold the content."
+    },
+    "LT": {
+      "intro": "The complement you need is a Multiplier — someone who reads people quickly and builds trust without effort.",
+      "partner": "Pair with the person everyone already tells things to. Ask them to run the conversations while you run the work."
+    },
+    "LC": {
+      "intro": "The complement you need is an Architect — someone who sees the structure behind the situation and can sequence it.",
+      "partner": "Pair with the person who asks what else this will affect. Ask them to map it before you commit the team to it."
+    },
+    "LP": {
+      "intro": "The complement you need is a Stabilizer — someone whose judgment does not degrade when the clock starts.",
+      "partner": "Pair with the person who gets quieter as things get worse. Ask them to make the call when the room is loud."
+    },
+    "LF": {
+      "intro": "The complement you need is a Pathfinder — someone who is looking further out than the current problem.",
+      "partner": "Pair with the person who keeps asking what happens after this. Ask them what you are not seeing before you lock the plan."
+    }
+  },
+  "footer": "This is a developmental instrument. It does not affect your grade, it is not a psychological or clinical assessment, and it is not used for admission, selection, or any decision about your standing. It is pre-norming: the bands are provisional and will be re-anchored as we collect data. You will take it again in Week 15 — the number that matters is what moved.",
+  "pressure_caveat": "Each domain's gap comes from a single paired scenario, so treat one domain's number as a signal rather than a measurement. The average across all five is the sturdier figure, and the Week 15 re-test is what turns either into evidence."
+}

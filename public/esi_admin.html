@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>ESI Console</title>
+<style>
+  :root{--crimson:#A6192E;--deep:#7E0F22;--ink:#0A0A0A;--graphite:#3A3A3A;--grey:#6B7280;
+        --line:#D1D5DB;--surface:#F6F6F4;--white:#fff}
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{background:var(--surface);color:var(--graphite);
+    font:15px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Helvetica,Arial,sans-serif}
+  header{background:var(--white);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20}
+  .hd{max-width:1280px;margin:0 auto;padding:12px 20px;display:flex;align-items:center;gap:18px}
+  .brand{font-weight:800;letter-spacing:.06em;color:var(--crimson);font-size:14px}
+  .brand span{color:var(--ink)}
+  nav.tabs{display:flex;gap:5px;margin-left:auto;flex-wrap:wrap}
+  nav.tabs button{background:transparent;border:1px solid var(--line);color:var(--grey);
+    padding:7px 14px;border-radius:8px;font:inherit;font-size:13px;font-weight:650;cursor:pointer}
+  nav.tabs button.on{background:var(--crimson);border-color:var(--crimson);color:#fff}
+  .wrap{max-width:1280px;margin:0 auto;padding:22px 20px 80px}
+  h1{font-size:22px;color:var(--ink);margin:0 0 6px}
+  h2{font-size:17px;color:var(--ink);margin:22px 0 8px}
+  p{margin:0 0 12px}
+  .muted{color:var(--grey);font-size:13px}
+  .card{background:var(--white);border:1px solid var(--line);border-radius:11px;padding:18px 20px;margin:14px 0}
+  input,select,textarea{font:inherit;border:1px solid var(--line);border-radius:8px;padding:9px 11px;
+    background:var(--white);color:var(--ink);width:100%}
+  textarea{resize:vertical;font:13px/1.55 ui-monospace,SFMono-Regular,Menlo,monospace}
+  label.f{display:block;font-size:12px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;
+    color:var(--grey);margin:0 0 5px}
+  button{font:inherit;font-weight:650;border-radius:8px;padding:9px 18px;cursor:pointer;border:1px solid transparent}
+  .primary{background:var(--crimson);color:#fff}.primary:hover{background:var(--deep)}
+  .ghost{background:var(--white);color:var(--graphite);border-color:var(--line)}.ghost:hover{border-color:#9AA3AF}
+  .danger{background:var(--white);color:var(--deep);border-color:#E3B9C1}
+  button:disabled{opacity:.5;cursor:not-allowed}
+  .row{display:flex;gap:10px;flex-wrap:wrap;align-items:flex-end}
+  .row>div{flex:1;min-width:150px}
+  table{width:100%;border-collapse:collapse;font-size:13.5px}
+  th{text-align:left;font-size:11px;text-transform:uppercase;letter-spacing:.07em;color:#fff;
+    background:var(--crimson);padding:8px 10px;position:sticky;top:0}
+  td{padding:8px 10px;border-bottom:1px solid #E8E8E5;vertical-align:top}
+  tr:hover td{background:#FAFAF8}
+  tr.click{cursor:pointer}
+  .pill{font-size:10.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;
+    padding:2px 8px;border-radius:20px;white-space:nowrap}
+  .p-pending{background:#FFF4E5;color:#8A5A00;border:1px solid #F0D9AE}
+  .p-released{background:#E9F5EE;color:#1E6B3C;border:1px solid #BFE0CC}
+  .p-withheld{background:#EDEDEA;color:#5A5F69;border:1px solid #D9D9D4}
+  .p-void{background:#F5F5F4;color:#9098A6;border:1px solid #E2E2DE}
+  .split{display:grid;grid-template-columns:340px 1fr;gap:18px;align-items:start}
+  @media(max-width:900px){.split{grid-template-columns:1fr}}
+  .list{max-height:74vh;overflow:auto;border:1px solid var(--line);border-radius:11px;background:var(--white)}
+  .li{padding:12px 14px;border-bottom:1px solid #E8E8E5;cursor:pointer}
+  .li:hover{background:#FAFAF8}.li.on{background:#FDF7F8;box-shadow:inset 3px 0 0 var(--crimson)}
+  .li b{color:var(--ink)}
+  .kpi{display:grid;grid-template-columns:repeat(auto-fit,minmax(112px,1fr));gap:10px;margin:4px 0 12px}
+  .k{background:var(--white);border:1px solid var(--line);border-radius:10px;padding:11px 13px}
+  .k .n{font-size:21px;font-weight:750;color:var(--ink);letter-spacing:-.5px}
+  .k .l{font-size:10.5px;text-transform:uppercase;letter-spacing:.07em;color:var(--grey);margin-top:2px}
+  .k.hot .n{color:var(--crimson)}
+  .brief{white-space:pre-wrap;font:13px/1.6 ui-monospace,SFMono-Regular,Menlo,monospace;
+    background:#FCFCFB;border:1px solid var(--line);border-radius:9px;padding:14px;max-height:60vh;overflow:auto}
+  .warn{border-left:4px solid var(--crimson);background:var(--white);border:1px solid var(--line);
+    border-left:4px solid var(--crimson);border-radius:8px;padding:14px 16px;margin:14px 0;font-size:13.5px}
+  .hide{display:none!important}
+  code{background:#EDEDEA;padding:1px 5px;border-radius:4px;font-size:12.5px}
+  .num{text-align:right;font-variant-numeric:tabular-nums}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="hd">
+    <div class="brand">EXCEED STUDENT<span>™</span> · ESI CONSOLE</div>
+    <nav class="tabs" id="tabs">
+      <button data-v="queue" class="on">Review queue</button>
+      <button data-v="cohort">Cohort</button>
+      <button data-v="tokens">Links</button>
+      <button data-v="signout">Sign out</button>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <!-- ── sign in ─────────────────────────────────────────────────── -->
+  <section id="auth">
+    <h1>Sign in</h1>
+    <p class="muted">Your admin key is held in this browser tab only. It is never stored.</p>
+    <div class="card" style="max-width:520px">
+      <label class="f" for="key">Admin API key</label>
+      <input id="key" type="password" autocomplete="off" placeholder="Bearer key">
+      <label class="f" style="margin-top:12px" for="actor">Your name (recorded on every release)</label>
+      <input id="actor" type="text" autocomplete="off" placeholder="e.g. G. Kent">
+      <p style="margin-top:14px"><button class="primary" id="signin">Sign in</button>
+      <span class="muted" id="autherr" style="margin-left:10px"></span></p>
+    </div>
+  </section>
+
+  <!-- ── queue ───────────────────────────────────────────────────── -->
+  <section id="v-queue" class="hide">
+    <h1>Review queue</h1>
+    <p class="muted">Nothing reaches a student from here without you releasing it.</p>
+    <div class="row" style="margin-bottom:12px">
+      <div><label class="f">Status</label>
+        <select id="q-status">
+          <option value="pending_review">Pending review</option>
+          <option value="">All</option>
+          <option value="released">Released</option>
+          <option value="withheld">Withheld</option>
+        </select></div>
+      <div><label class="f">Cohort</label><input id="q-cohort" placeholder="all"></div>
+      <div><label class="f">Window</label>
+        <select id="q-window"><option value="">Both</option><option value="day0">Day 0</option><option value="wk15">Week 15</option></select></div>
+      <div style="flex:0"><button class="ghost" id="q-refresh">Refresh</button></div>
+    </div>
+    <div class="split">
+      <div class="list" id="q-list"></div>
+      <div id="q-detail"><p class="muted">Select a submission.</p></div>
+    </div>
+  </section>
+
+  <!-- ── cohort ──────────────────────────────────────────────────── -->
+  <section id="v-cohort" class="hide">
+    <h1>Cohort</h1>
+    <div class="row" style="margin-bottom:12px">
+      <div><label class="f">Cohort</label><input id="c-name" placeholder="CJ490-F26"></div>
+      <div style="flex:0"><button class="primary" id="c-load">Load</button></div>
+      <div style="flex:0"><button class="ghost" id="c-csv">Export CSV</button></div>
+    </div>
+    <div id="c-out"></div>
+  </section>
+
+  <!-- ── tokens ──────────────────────────────────────────────────── -->
+  <section id="v-tokens" class="hide">
+    <h1>Assessment links</h1>
+    <div class="warn">
+      Raw links are shown <strong>once</strong>, at the moment you mint them. They are stored only as a hash,
+      so they cannot be recovered — copy them out before you leave this page.
+    </div>
+    <div class="card">
+      <div class="row">
+        <div><label class="f">Cohort</label><input id="t-cohort" placeholder="CJ490-F26"></div>
+        <div><label class="f">Window</label>
+          <select id="t-window"><option value="day0">Day 0</option><option value="wk15">Week 15</option></select></div>
+        <div><label class="f">Expires in (days)</label><input id="t-days" type="number" value="30" min="0"></div>
+      </div>
+      <label class="f" style="margin-top:14px">Roster — one per line: <code>student_ref, Full Name, email</code></label>
+      <textarea id="t-roster" rows="8" placeholder="12345678, A. Student, astudent@crimson.ua.edu&#10;12345679, B. Student, bstudent@crimson.ua.edu"></textarea>
+      <p style="margin-top:12px"><button class="primary" id="t-mint">Mint links</button>
+      <span class="muted" id="t-msg" style="margin-left:10px"></span></p>
+    </div>
+    <div id="t-out"></div>
+    <h2>Issued</h2>
+    <div id="t-list"></div>
+  </section>
+
+</div>
+
+<script>
+(function () {
+  'use strict';
+  var $ = function (id) { return document.getElementById(id); };
+  var KEY = '', ACTOR = '', CUR = null;
+  var esc = function (s) { return String(s == null ? '' : s)
+    .replace(/[&<>"]/g, function (c) { return { '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;' }[c]; }); };
+
+  function api(path, opts) {
+    opts = opts || {};
+    opts.headers = Object.assign({ 'Authorization': 'Bearer ' + KEY, 'X-Admin-Actor': ACTOR,
+      'Content-Type': 'application/json' }, opts.headers || {});
+    return fetch('/api/admin/esi' + path, opts).then(function (r) {
+      if (r.status === 401) { signOut('Key rejected.'); throw new Error('unauthorized'); }
+      return r.text().then(function (t) {
+        var j; try { j = JSON.parse(t); } catch (e) { j = { raw: t }; }
+        if (!r.ok) throw new Error(j.error || ('HTTP ' + r.status));
+        return j;
+      });
+    });
+  }
+
+  function view(v) {
+    ['auth','v-queue','v-cohort','v-tokens'].forEach(function (s) { $(s).classList.add('hide'); });
+    $(v).classList.remove('hide');
+    Array.prototype.forEach.call($('tabs').children, function (b) {
+      b.classList.toggle('on', b.getAttribute('data-v') === v.replace('v-', ''));
+    });
+  }
+  function signOut(msg) {
+    KEY = ''; ACTOR = ''; $('key').value = '';
+    $('tabs').classList.add('hide'); view('auth');
+    $('autherr').textContent = msg || '';
+  }
+
+  $('signin').addEventListener('click', function () {
+    KEY = $('key').value.trim(); ACTOR = $('actor').value.trim() || 'admin';
+    if (!KEY) { $('autherr').textContent = 'Key required.'; return; }
+    api('/whoami').then(function () {
+      $('autherr').textContent = ''; $('tabs').classList.remove('hide');
+      view('v-queue'); loadQueue();
+    }).catch(function (e) { $('autherr').textContent = e.message; });
+  });
+  $('key').addEventListener('keydown', function (e) { if (e.key === 'Enter') $('signin').click(); });
+
+  Array.prototype.forEach.call($('tabs').children, function (b) {
+    b.addEventListener('click', function () {
+      var v = b.getAttribute('data-v');
+      if (v === 'signout') return signOut();
+      view('v-' + v);
+      if (v === 'queue') loadQueue();
+      if (v === 'tokens') loadTokens();
+    });
+  });
+
+  /* ── queue ─────────────────────────────────────────────────────── */
+  function pill(s) { return '<span class="pill p-' + (s === 'pending_review' ? 'pending' : s) + '">'
+    + esc(s === 'pending_review' ? 'pending' : s) + '</span>'; }
+
+  function loadQueue() {
+    var q = [];
+    if ($('q-status').value) q.push('status=' + encodeURIComponent($('q-status').value));
+    if ($('q-cohort').value.trim()) q.push('cohort=' + encodeURIComponent($('q-cohort').value.trim()));
+    if ($('q-window').value) q.push('window=' + encodeURIComponent($('q-window').value));
+    api('/submissions' + (q.length ? '?' + q.join('&') : '')).then(function (rows) {
+      if (!rows.length) { $('q-list').innerHTML = '<p class="muted" style="padding:16px">Nothing here.</p>';
+        $('q-detail').innerHTML = '<p class="muted">Select a submission.</p>'; return; }
+      $('q-list').innerHTML = rows.map(function (r) {
+        return '<div class="li" data-id="' + esc(r.id) + '">'
+          + '<b>' + esc(r.full_name || r.student_ref) + '</b> ' + pill(r.status)
+          + '<div class="muted">' + esc(r.cohort) + ' · ' + (r.window === 'wk15' ? 'Week 15' : 'Day 0')
+          + ' · composite ' + esc(r.composite) + ' · ' + esc(r.band) + '</div>'
+          + '<div class="muted">gap ' + (r.pressure_overall > 0 ? '+' : '') + esc(r.pressure_overall)
+          + ' · ' + esc(r.signature_pair) + '</div></div>';
+      }).join('');
+      Array.prototype.forEach.call($('q-list').querySelectorAll('.li'), function (el) {
+        el.addEventListener('click', function () {
+          Array.prototype.forEach.call($('q-list').querySelectorAll('.li'), function (x) { x.classList.remove('on'); });
+          el.classList.add('on'); openSub(el.getAttribute('data-id'));
+        });
+      });
+    }).catch(function (e) { $('q-list').innerHTML = '<p class="muted" style="padding:16px">' + esc(e.message) + '</p>'; });
+  }
+  $('q-refresh').addEventListener('click', loadQueue);
+  ['q-status','q-window'].forEach(function (id) { $(id).addEventListener('change', loadQueue); });
+  $('q-cohort').addEventListener('keydown', function (e) { if (e.key === 'Enter') loadQueue(); });
+
+  function openSub(id) {
+    $('q-detail').innerHTML = '<p class="muted">Loading…</p>';
+    api('/submissions/' + id).then(function (s) {
+      CUR = s;
+      var p = s.profile, d = p.pressure.by_domain;
+      var DN = { LS:'Leading Self', LT:'Leading Teams', LC:'Leading Through Complexity',
+                 LP:'Leading Under Pressure', LF:'Leading Into the Future' };
+      var h = '';
+      h += '<div class="card"><h2 style="margin-top:0">' + esc(s.full_name || s.student_ref) + ' ' + pill(s.status) + '</h2>';
+      h += '<p class="muted">' + esc(s.cohort) + ' · ' + (s.window === 'wk15' ? 'Week 15' : 'Day 0')
+         + ' · submitted ' + esc(String(s.created_at).slice(0, 16).replace('T', ' '))
+         + ' · <code>' + esc(s.versions.engine) + '</code></p>';
+      h += '<div class="kpi">'
+         + '<div class="k"><div class="n">' + esc(p.composite) + '</div><div class="l">Composite</div></div>'
+         + '<div class="k"><div class="n" style="font-size:14px;padding-top:5px">' + esc(p.band.name) + '</div><div class="l">Band</div></div>'
+         + '<div class="k hot"><div class="n">' + (p.pressure.overall > 0 ? '+' : '') + esc(p.pressure.overall) + '</div><div class="l">Avg gap</div></div>'
+         + '<div class="k"><div class="n" style="font-size:14px;padding-top:5px">' + esc(p.archetype.name) + '</div><div class="l">' + esc(p.signature_pair) + '</div></div>'
+         + '</div>';
+      h += '<table><thead><tr><th>Domain</th><th class="num">Score</th><th class="num">Composed</th><th class="num">Compressed</th><th class="num">Gap</th></tr></thead><tbody>';
+      p.domain_order.forEach(function (k) {
+        h += '<tr><td>' + esc(DN[k]) + '</td><td class="num">' + esc(p.domains[k]) + '</td>'
+           + '<td class="num">' + esc(d[k].composed) + '</td><td class="num">' + esc(d[k].compressed) + '</td>'
+           + '<td class="num"><b>' + (d[k].delta > 0 ? '+' : '') + esc(d[k].delta) + '</b></td></tr>';
+      });
+      h += '</tbody></table></div>';
+
+      h += '<div class="card"><h2 style="margin-top:0">Draft Brief</h2>';
+      h += '<p class="muted">Edit if you need to. What you release is what the student sees.</p>';
+      h += '<textarea id="brief" rows="18">' + esc(s.report_text) + '</textarea>';
+      if (s.status === 'pending_review') {
+        h += '<p style="margin-top:12px"><button class="primary" id="rel">Release to student</button> '
+           + '<button class="danger" id="wh">Withhold</button> '
+           + '<span class="muted" id="relmsg" style="margin-left:10px"></span></p>';
+      } else {
+        h += '<p class="muted" style="margin-top:12px">Released ' + esc(String(s.released_at || '').slice(0, 16).replace('T', ' '))
+           + ' by ' + esc(s.released_by || '—') + '.</p>';
+      }
+      h += '</div>';
+
+      if (s.depth && s.depth.length) {
+        h += '<div class="card"><h2 style="margin-top:0">Depth responses</h2>'
+           + '<p class="muted">Interpretive only. These never affected the score.</p>'
+           + s.depth.map(function (x) { return '<p><b>' + esc(x.prompt_id) + '</b><br>' + esc(x.body) + '</p>'; }).join('')
+           + '</div>';
+      }
+
+      h += '<div class="card"><h2 style="margin-top:0">Raw responses</h2><div class="brief">'
+         + esc(JSON.stringify(s.responses, null, 1)) + '</div></div>';
+
+      if (s.audit && s.audit.length) {
+        h += '<div class="card"><h2 style="margin-top:0">Audit</h2>'
+           + s.audit.map(function (a) { return '<div class="muted">' + esc(String(a.created_at).slice(0,16).replace('T',' '))
+             + ' — ' + esc(a.actor) + ' ' + esc(a.action) + (a.detail ? ' (' + esc(a.detail) + ')' : '') + '</div>'; }).join('')
+           + '</div>';
+      }
+
+      $('q-detail').innerHTML = h;
+      if ($('rel')) {
+        $('rel').addEventListener('click', function () {
+          $('rel').disabled = true; $('relmsg').textContent = 'Releasing…';
+          api('/submissions/' + id + '/release', { method: 'POST',
+            body: JSON.stringify({ report_text: $('brief').value }) })
+            .then(function () { $('relmsg').textContent = 'Released.'; loadQueue(); openSub(id); })
+            .catch(function (e) { $('rel').disabled = false; $('relmsg').textContent = e.message; });
+        });
+        $('wh').addEventListener('click', function () {
+          var why = prompt('Why is this being withheld? (recorded in the audit trail)');
+          if (why === null) return;
+          api('/submissions/' + id + '/withhold', { method: 'POST', body: JSON.stringify({ reason: why }) })
+            .then(function () { loadQueue(); openSub(id); });
+        });
+      }
+    }).catch(function (e) { $('q-detail').innerHTML = '<p class="muted">' + esc(e.message) + '</p>'; });
+  }
+
+  /* ── cohort ────────────────────────────────────────────────────── */
+  $('c-load').addEventListener('click', function () {
+    var c = $('c-name').value.trim(); if (!c) return;
+    $('c-out').innerHTML = '<p class="muted">Loading…</p>';
+    api('/cohort/' + encodeURIComponent(c)).then(function (r) {
+      var h = '<div class="kpi">'
+        + '<div class="k"><div class="n">' + r.n + '</div><div class="l">Students</div></div>'
+        + '<div class="k"><div class="n">' + r.n_paired + '</div><div class="l">Both windows</div></div>'
+        + '<div class="k hot"><div class="n">' + (r.mean_pressure_delta_change === null ? '–'
+            : (r.mean_pressure_delta_change > 0 ? '+' : '') + r.mean_pressure_delta_change)
+        + '</div><div class="l">Mean Δ gap</div></div></div>';
+      h += '<div class="warn">' + esc(r.note) + '</div>';
+      h += '<div class="card" style="padding:0;overflow:auto"><table><thead><tr>'
+        + '<th>Student</th><th class="num">D0 comp.</th><th class="num">D0 gap</th>'
+        + '<th class="num">W15 comp.</th><th class="num">W15 gap</th>'
+        + '<th class="num">Δ composite</th><th class="num">Δ gap</th></tr></thead><tbody>';
+      r.students.forEach(function (s) {
+        var d = s.day0, w = s.wk15;
+        h += '<tr><td>' + esc(s.full_name || s.student_ref) + '</td>'
+          + '<td class="num">' + (d ? esc(d.composite) : '–') + '</td>'
+          + '<td class="num">' + (d ? esc(d.pressure_overall) : '–') + '</td>'
+          + '<td class="num">' + (w ? esc(w.composite) : '–') + '</td>'
+          + '<td class="num">' + (w ? esc(w.pressure_overall) : '–') + '</td>'
+          + '<td class="num">' + (s.composite_change === null ? '–' : (s.composite_change > 0 ? '+' : '') + esc(s.composite_change)) + '</td>'
+          + '<td class="num"><b>' + (s.pressure_delta_change === null ? '–'
+              : (s.pressure_delta_change > 0 ? '+' : '') + esc(s.pressure_delta_change)) + '</b></td></tr>';
+      });
+      h += '</tbody></table></div>';
+      $('c-out').innerHTML = h;
+    }).catch(function (e) { $('c-out').innerHTML = '<p class="muted">' + esc(e.message) + '</p>'; });
+  });
+  $('c-csv').addEventListener('click', function () {
+    var c = $('c-name').value.trim(); if (!c) return;
+    fetch('/api/admin/esi/export/' + encodeURIComponent(c) + '.csv',
+      { headers: { 'Authorization': 'Bearer ' + KEY } })
+      .then(function (r) { return r.blob(); })
+      .then(function (b) {
+        var a = document.createElement('a');
+        a.href = URL.createObjectURL(b); a.download = 'esi_' + c + '.csv'; a.click();
+        URL.revokeObjectURL(a.href);
+      });
+  });
+
+  /* ── tokens ────────────────────────────────────────────────────── */
+  $('t-mint').addEventListener('click', function () {
+    var cohort = $('t-cohort').value.trim();
+    var roster = $('t-roster').value.split('\n').map(function (l) { return l.trim(); })
+      .filter(Boolean).map(function (l) {
+        var p = l.split(',').map(function (x) { return x.trim(); });
+        return { student_ref: p[0], full_name: p[1] || null, email: p[2] || null };
+      });
+    if (!cohort || !roster.length) { $('t-msg').textContent = 'Cohort and roster required.'; return; }
+    $('t-mint').disabled = true; $('t-msg').textContent = 'Minting…';
+    api('/tokens', { method: 'POST', body: JSON.stringify({
+      roster: roster, cohort: cohort, window: $('t-window').value, days: Number($('t-days').value) }) })
+      .then(function (r) {
+        $('t-mint').disabled = false; $('t-msg').textContent = r.count + ' minted.';
+        var rows = r.tokens.map(function (t) { return t.student_ref + '\t' + t.url; }).join('\n');
+        $('t-out').innerHTML = '<div class="warn">' + esc(r.warning) + '</div>'
+          + '<div class="card"><label class="f">Copy these now</label>'
+          + '<textarea rows="' + Math.min(14, r.count + 1) + '" id="t-links">' + esc(rows) + '</textarea>'
+          + '<p style="margin-top:10px"><button class="ghost" id="t-copy">Copy all</button></p></div>';
+        $('t-copy').addEventListener('click', function () {
+          $('t-links').select(); document.execCommand('copy'); $('t-copy').textContent = 'Copied';
+        });
+        loadTokens();
+      }).catch(function (e) { $('t-mint').disabled = false; $('t-msg').textContent = e.message; });
+  });
+
+  function loadTokens() {
+    api('/tokens').then(function (rows) {
+      if (!rows.length) { $('t-list').innerHTML = '<p class="muted">None yet.</p>'; return; }
+      $('t-list').innerHTML = '<div class="card" style="padding:0;overflow:auto"><table><thead><tr>'
+        + '<th>Student</th><th>Cohort</th><th>Window</th><th>Status</th><th>Expires</th></tr></thead><tbody>'
+        + rows.map(function (t) {
+          return '<tr><td>' + esc(t.full_name || t.student_ref) + '</td><td>' + esc(t.cohort) + '</td>'
+            + '<td>' + (t.window === 'wk15' ? 'Week 15' : 'Day 0') + '</td>'
+            + '<td>' + (t.used_at ? '<span class="pill p-released">used</span>'
+                                  : '<span class="pill p-pending">unused</span>') + '</td>'
+            + '<td class="muted">' + esc(String(t.expires_at || '—').slice(0, 10)) + '</td></tr>';
+        }).join('') + '</tbody></table></div>';
+    }).catch(function (e) { $('t-list').innerHTML = '<p class="muted">' + esc(e.message) + '</p>'; });
+  }
+
+  $('tabs').classList.add('hide');
+  view('auth');
+})();
+</script>
+</body>
+</html>

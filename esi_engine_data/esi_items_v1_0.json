@@ -1,0 +1,645 @@
+{
+  "instrument": "ESI Instrument v1.0 — 22 judgment-scenario presentations (17 scenarios, 5 pressure-paired covering all five domains) + 16 behavioral items = 38 items, ~24 minutes. Student-scope port of EEI Instrument v1.2: identical facet map, tendency axes, option-coding scheme, and composed/compressed pair mechanic. Scenario scope is pre-career (student organizations, teams, group work, part-time supervision, campus incidents, internships). Treat coding vectors as Core IP.",
+  "port_of": "eei_engine_data/items_v1_2.json",
+  "facet_map": "identical to EEI v1.2 — 24 facets, ls·5 lt·5 lc·5 lp·4 lf·5. Facet IDs are deliberately unchanged so an ESI profile is longitudinally comparable to a later EEI profile.",
+  "sjs": [
+    {
+      "id": "S01",
+      "domain_lead": "LC",
+      "context": "You are president of a 40-member student organization. Your signature spring event is eight weeks out and two committees have quietly stopped delivering. Your exec board wants to push the date. Two committee chairs tell you privately that the problem is how the org is structured, not the timeline.",
+      "options": {
+        "A": {
+          "text": "Map how the org actually works end to end before deciding anything. The stall is information about the structure.",
+          "facets": {"lc.systems_thinking": 2, "lc.change_leadership": 1, "lp.decision_architecture": 1},
+          "tendencies": {"velocity": -2, "information": -2}
+        },
+        "B": {
+          "text": "Get the two chairs and your exec board in one room this week and broker a reset they all own.",
+          "facets": {"lt.trust_building": 2, "lc.change_leadership": 2, "lc.enterprise_alignment": 1},
+          "tendencies": {"orientation": 2, "counsel": 2}
+        },
+        "C": {
+          "text": "Cut the two committees from this event, run a smaller version, and fix the structure over the summer.",
+          "facets": {"lc.prioritization": 1, "lf.adaptability": 1, "lc.enterprise_alignment": -1},
+          "tendencies": {"velocity": 2, "risk": 1}
+        },
+        "D": {
+          "text": "Call an all-hands, re-sell the vision, and set a bigger goal to pull people through the slump.",
+          "facets": {"lf.strategic_imagination": 1, "lt.communication": 1, "lc.systems_thinking": -1, "lc.governance": -1},
+          "tendencies": {"velocity": 1, "information": 2, "orientation": 1}
+        }
+      }
+    },
+    {
+      "id": "S02",
+      "domain_lead": "LT",
+      "context": "Four-person group project, three weeks in. One member has produced almost nothing. Another has quietly been doing that person's share on top of their own and has not said a word about it. You are the one who has to submit.",
+      "options": {
+        "A": {
+          "text": "Talk to the one covering first. Their silence is the more urgent signal — you are losing a person to resentment.",
+          "facets": {"lt.psychological_safety": 2, "lt.trust_building": 1, "ls.self_awareness": 1},
+          "tendencies": {"orientation": 2, "counsel": 1}
+        },
+        "B": {
+          "text": "Go to the one not delivering, name the specific missed work, and agree what lands by when.",
+          "facets": {"lt.accountability": 2, "lt.communication": 1},
+          "tendencies": {"velocity": 1, "orientation": -1}
+        },
+        "C": {
+          "text": "Rewrite the work split in writing so everyone can see who owns what, then run it past the group.",
+          "facets": {"lc.governance": 2, "lt.accountability": 1, "lt.trust_building": -1},
+          "tendencies": {"information": -1, "counsel": 1}
+        },
+        "D": {
+          "text": "Say nothing and absorb it. The project is nearly done and the conflict costs more than the work does.",
+          "facets": {"lt.accountability": -2, "lt.psychological_safety": -1, "ls.discipline": -1},
+          "tendencies": {"velocity": -2, "orientation": 1}
+        }
+      }
+    },
+    {
+      "id": "S03",
+      "domain_lead": "LS",
+      "context": "You get a grade back well below what you expected, with written comments arguing your central claim was never actually supported. You reread your work and still think it was.",
+      "options": {
+        "A": {
+          "text": "Write out the strongest possible version of the grader's argument before you write a single word of your own response.",
+          "facets": {"ls.bias_recognition": 2, "lf.belief_revision": 2, "ls.self_awareness": 1},
+          "tendencies": {"information": -2, "velocity": -1}
+        },
+        "B": {
+          "text": "Go to office hours and ask what specifically would have had to be on the page. Ask questions, do not argue.",
+          "facets": {"ls.self_awareness": 2, "lt.communication": 1, "lf.belief_revision": 1},
+          "tendencies": {"counsel": 2, "orientation": 1}
+        },
+        "C": {
+          "text": "Write a careful appeal. You are confident in the work and the record should reflect it.",
+          "facets": {"ls.bias_recognition": -1, "lf.belief_revision": -2, "lt.communication": 1},
+          "tendencies": {"risk": 1, "counsel": -2}
+        },
+        "D": {
+          "text": "Let it go. One grade is noise; you will make it up on the next one.",
+          "facets": {"ls.self_awareness": -1, "ls.bias_recognition": -1, "ls.discipline": -1},
+          "tendencies": {"velocity": 1, "information": 1}
+        }
+      }
+    },
+    {
+      "id": "S04",
+      "domain_lead": "LF",
+      "context": "Two summer offers. One is a structured internship at a large agency — known, safe, a line on the résumé everyone recognizes. The other is unpaid work on a new program run by someone you respect, with no guarantee it still exists in September.",
+      "options": {
+        "A": {
+          "text": "Write down what would have to be true for the unproven one to be worth it, then go find out whether it is.",
+          "facets": {"lf.strategic_bets": 2, "lp.decision_architecture": 1, "lf.strategic_imagination": 1},
+          "tendencies": {"information": -2}
+        },
+        "B": {
+          "text": "Take the known one. At this stage the credential compounds and you can take risk later with more to fall back on.",
+          "facets": {"lf.strategic_bets": 1, "lc.prioritization": 1, "lf.adaptability": -1},
+          "tendencies": {"risk": -2, "velocity": 1}
+        },
+        "C": {
+          "text": "Take the unproven one. The upside is asymmetric and you will never have less to lose than right now.",
+          "facets": {"lf.strategic_bets": 1, "lf.strategic_imagination": 2, "lp.decision_architecture": -1},
+          "tendencies": {"risk": 2, "velocity": 2}
+        },
+        "D": {
+          "text": "Ask three people who have made this exact choice what they would do again, then decide.",
+          "facets": {"lt.trust_building": 1, "lf.belief_revision": 1, "ls.self_awareness": -1},
+          "tendencies": {"counsel": 2, "velocity": -1}
+        }
+      }
+    },
+    {
+      "id": "S05",
+      "domain_lead": "LC",
+      "context": "You are co-running a joint event between two student organizations. Neither group reports to you. Both have committed budget. Each wants the event branded as theirs, and the venue needs a single name on the contract by Friday.",
+      "options": {
+        "A": {
+          "text": "Find the thing both groups actually want out of this and design a structure where each gets it without the branding fight.",
+          "facets": {"lc.enterprise_alignment": 2, "lc.systems_thinking": 1, "lt.trust_building": 1},
+          "tendencies": {"information": -1, "counsel": 1}
+        },
+        "B": {
+          "text": "Put both names on it, split the credit formally in writing, and move on to the work.",
+          "facets": {"lc.governance": 2, "lc.enterprise_alignment": 1},
+          "tendencies": {"velocity": 2}
+        },
+        "C": {
+          "text": "Let the group carrying more of the budget lead. Money is the honest tiebreaker and everyone knows it.",
+          "facets": {"lc.prioritization": 1, "lt.psychological_safety": -1, "lc.enterprise_alignment": -1},
+          "tendencies": {"velocity": 2, "orientation": -2}
+        },
+        "D": {
+          "text": "Escalate to the student activities office and let them impose a rule you can both blame.",
+          "facets": {"lc.change_leadership": -2, "lt.trust_building": -1, "lc.governance": 1},
+          "tendencies": {"counsel": 2, "risk": -2}
+        }
+      }
+    },
+    {
+      "id": "S06",
+      "domain_lead": "LT",
+      "context": "You are shift lead. One of your crew is a friend from before the job and has been fifteen minutes late four times this month. Two other people have noticed and one has started arriving late too.",
+      "options": {
+        "A": {
+          "text": "Have the conversation today, off the floor: name the four times, name the effect on the others, agree what changes.",
+          "facets": {"lt.accountability": 2, "lt.communication": 2, "lp.ethical_clarity": 1},
+          "tendencies": {"velocity": 1, "orientation": -1}
+        },
+        "B": {
+          "text": "Restate the start-time standard to the whole crew so it does not single anyone out.",
+          "facets": {"lt.accountability": -1, "lt.communication": -1, "lt.psychological_safety": -1},
+          "tendencies": {"orientation": 1, "risk": -2}
+        },
+        "C": {
+          "text": "Ask them first whether something is going on. There may be a reason the schedule cannot see.",
+          "facets": {"lt.psychological_safety": 2, "lt.trust_building": 1, "ls.self_awareness": 1},
+          "tendencies": {"orientation": 2, "velocity": -1}
+        },
+        "D": {
+          "text": "Report it up. It is a scheduling matter and the friendship makes you the wrong person to handle it.",
+          "facets": {"lt.accountability": -1, "lp.ethical_clarity": 1, "lt.trust_building": -2},
+          "tendencies": {"counsel": 2, "risk": -1}
+        }
+      }
+    },
+
+    {
+      "id": "S07a",
+      "domain_lead": "LP",
+      "pair": "S07",
+      "condition": "composed",
+      "context": "COMPOSED · Two weeks before your team's final presentation you discover that a section a teammate submitted is not their work. You have the file history, the deadline is not for fourteen days, and you can reach everyone involved.",
+      "options": {
+        "A": {
+          "text": "Decide your criteria first — what you owe the team, the teammate, and the course — write them down, then act against them.",
+          "facets": {"lp.decision_architecture": 2, "lp.ethical_clarity": 1, "lc.governance": 1},
+          "tendencies": {"information": -2, "velocity": -1}
+        },
+        "B": {
+          "text": "Go to the teammate directly, tell them what you found, and give them the chance to fix it themselves before anyone else knows.",
+          "facets": {"lp.ethical_clarity": 2, "lt.trust_building": 1, "lp.judgment_under_stress": 1},
+          "tendencies": {"orientation": 2, "velocity": 1}
+        },
+        "C": {
+          "text": "Quietly rewrite the section yourself and say nothing. The work gets fixed and nobody's record gets destroyed.",
+          "facets": {"lp.ethical_clarity": -2, "lp.decision_architecture": -1, "lt.accountability": -1},
+          "tendencies": {"risk": 2, "velocity": 1}
+        },
+        "D": {
+          "text": "Bring it to the whole team and let the group decide together what to do.",
+          "facets": {"lt.psychological_safety": 1, "lp.decision_architecture": 1, "lp.ethical_clarity": -1},
+          "tendencies": {"counsel": 2, "orientation": 1}
+        }
+      }
+    },
+    {
+      "id": "S07b",
+      "domain_lead": "LP",
+      "pair": "S07",
+      "condition": "compressed",
+      "context": "COMPRESSED · Same discovery — but it is forty minutes before the presentation, you found it while merging the slides, the teammate is in the room, the rest of the group is rehearsing, and your instructor is setting up at the front.",
+      "options": {
+        "A": {
+          "text": "Take four minutes you do not have. Decide what you will say to the teammate and to the instructor, then say the same thing to both.",
+          "facets": {"lp.decision_architecture": 2, "lp.judgment_under_stress": 2, "ls.emotional_regulation": 1},
+          "tendencies": {"velocity": -1, "information": -1}
+        },
+        "B": {
+          "text": "Pull the section from the deck now, present without it, and deal with the rest afterward.",
+          "facets": {"lp.judgment_under_stress": 2, "lp.ethical_clarity": 1, "lp.decision_architecture": 1},
+          "tendencies": {"velocity": 1, "risk": -1}
+        },
+        "C": {
+          "text": "Present it as-is. Forty minutes out is not the moment; raise it after, when there is time to be fair about it.",
+          "facets": {"lp.ethical_clarity": -2, "lp.judgment_under_stress": -1},
+          "tendencies": {"risk": 2, "velocity": -1}
+        },
+        "D": {
+          "text": "Tell the instructor now, before you present, and let them decide what happens next.",
+          "facets": {"lp.ethical_clarity": 2, "lp.judgment_under_stress": -1, "lt.trust_building": -1},
+          "tendencies": {"counsel": 2, "velocity": 2}
+        }
+      }
+    },
+
+    {
+      "id": "S08a",
+      "domain_lead": "LT",
+      "pair": "S08",
+      "condition": "composed",
+      "context": "COMPOSED · Two people on your team have stopped speaking to each other. You noticed a week ago. You have time, you can talk to each of them alone, and the next thing that depends on both of them is a month away.",
+      "options": {
+        "A": {
+          "text": "Talk to each of them separately first, listening only, before you form a view about who is right.",
+          "facets": {"lt.psychological_safety": 2, "ls.bias_recognition": 1, "lt.trust_building": 1},
+          "tendencies": {"orientation": 2, "information": -1}
+        },
+        "B": {
+          "text": "Get them in a room together with a structure: each states the other's position first, then their own.",
+          "facets": {"lt.communication": 2, "lt.trust_building": 1, "lc.governance": 1},
+          "tendencies": {"counsel": 2, "velocity": 1}
+        },
+        "C": {
+          "text": "Restructure the work so they do not need each other for the next month, and let it cool.",
+          "facets": {"lc.prioritization": 1, "lt.accountability": -1, "lt.psychological_safety": -1},
+          "tendencies": {"risk": -2, "orientation": -1}
+        },
+        "D": {
+          "text": "Tell them both directly that this is now affecting the team and they need to sort it out before the month is up.",
+          "facets": {"lt.accountability": 2, "lt.communication": 1, "lt.psychological_safety": -1},
+          "tendencies": {"velocity": 2, "orientation": -2}
+        }
+      }
+    },
+    {
+      "id": "S08b",
+      "domain_lead": "LT",
+      "pair": "S08",
+      "condition": "compressed",
+      "context": "COMPRESSED · Same two people — but it has just broken open in front of the whole team, mid-event, one of them is visibly upset, forty people are waiting on you, and the thing you are running starts in six minutes.",
+      "options": {
+        "A": {
+          "text": "Stop it in one sentence, give both a specific job away from each other, run the event, and set a time to deal with it tonight.",
+          "facets": {"lp.judgment_under_stress": 2, "lt.communication": 2, "ls.emotional_regulation": 1},
+          "tendencies": {"velocity": 2, "orientation": -1}
+        },
+        "B": {
+          "text": "Take the upset one aside for two minutes. The event can start late; a person coming apart in public cannot wait.",
+          "facets": {"lt.psychological_safety": 2, "lt.trust_building": 2, "lc.prioritization": -1},
+          "tendencies": {"orientation": 2, "velocity": -1}
+        },
+        "C": {
+          "text": "Ignore it and start. Addressing it now in front of everyone makes it bigger than it is.",
+          "facets": {"lt.psychological_safety": -2, "lt.accountability": -1, "ls.emotional_regulation": 1},
+          "tendencies": {"velocity": 2, "risk": 1}
+        },
+        "D": {
+          "text": "Ask someone senior on the team to handle the two of them while you run the event.",
+          "facets": {"lt.talent_judgment": 2, "lc.prioritization": 1, "lt.trust_building": -1},
+          "tendencies": {"counsel": 2, "velocity": 1}
+        }
+      }
+    },
+
+    {
+      "id": "S09a",
+      "domain_lead": "LS",
+      "pair": "S09",
+      "condition": "composed",
+      "context": "COMPOSED · You receive written feedback on a draft saying your work is confident but consistently avoids the hardest objection to its own argument. You have a week before the revision is due and nobody is watching you read it.",
+      "options": {
+        "A": {
+          "text": "Write the hardest objection out in full, in its strongest form, and see whether your argument survives it.",
+          "facets": {"ls.bias_recognition": 2, "lf.belief_revision": 2, "ls.discipline": 1},
+          "tendencies": {"information": -2}
+        },
+        "B": {
+          "text": "Go back to the person and ask them to point at the specific place where they saw it happen.",
+          "facets": {"ls.self_awareness": 2, "lt.communication": 1},
+          "tendencies": {"counsel": 2, "orientation": 1}
+        },
+        "C": {
+          "text": "Add a section addressing objections. The critique is about coverage and coverage is fixable.",
+          "facets": {"ls.self_awareness": -1, "ls.bias_recognition": -1, "ls.discipline": 1},
+          "tendencies": {"velocity": 2, "information": 1}
+        },
+        "D": {
+          "text": "Note it and move on. The draft scored fine and the comment reads like a stylistic preference.",
+          "facets": {"ls.bias_recognition": -2, "lf.belief_revision": -2, "ls.self_awareness": -1},
+          "tendencies": {"velocity": 2, "counsel": -2}
+        }
+      }
+    },
+    {
+      "id": "S09b",
+      "domain_lead": "LS",
+      "pair": "S09",
+      "condition": "compressed",
+      "context": "COMPRESSED · Same criticism — but it is said out loud, by a peer, in front of the room, immediately after you finish presenting, and everyone is looking at you waiting for the response.",
+      "options": {
+        "A": {
+          "text": "Ask one clarifying question, say out loud which part of it is fair, and leave it there.",
+          "facets": {"ls.emotional_regulation": 2, "ls.self_awareness": 2, "lf.belief_revision": 1},
+          "tendencies": {"velocity": -1, "counsel": 1}
+        },
+        "B": {
+          "text": "Explain the reasoning they missed. It is a fair question and it deserves a real answer now.",
+          "facets": {"ls.bias_recognition": -2, "ls.emotional_regulation": -1, "lt.communication": 1},
+          "tendencies": {"velocity": 2, "information": 1}
+        },
+        "C": {
+          "text": "Thank them, say you want to think about it properly, and follow up with them directly tomorrow.",
+          "facets": {"ls.emotional_regulation": 2, "ls.self_awareness": 1, "lf.belief_revision": 1},
+          "tendencies": {"velocity": -2, "orientation": 1}
+        },
+        "D": {
+          "text": "Turn it back: ask the room whether anyone else read it that way, and let the answer settle it.",
+          "facets": {"ls.emotional_regulation": -1, "ls.bias_recognition": -1, "lt.psychological_safety": -1},
+          "tendencies": {"counsel": 2, "risk": 1}
+        }
+      }
+    },
+
+    {
+      "id": "S10a",
+      "domain_lead": "LC",
+      "pair": "S10",
+      "condition": "composed",
+      "context": "COMPOSED · Three weeks out from an event you are running, it becomes clear the budget covers about two-thirds of what has been promised. You have the full picture, the whole planning team available, and time to decide.",
+      "options": {
+        "A": {
+          "text": "Rank everything promised by what the event is actually for, cut from the bottom, and tell people what was cut and why.",
+          "facets": {"lc.prioritization": 2, "lt.communication": 1, "lc.governance": 1},
+          "tendencies": {"information": -1, "velocity": 1}
+        },
+        "B": {
+          "text": "Work out what else the shortfall will break downstream before cutting anything.",
+          "facets": {"lc.systems_thinking": 2, "lp.decision_architecture": 1},
+          "tendencies": {"information": -2, "velocity": -2}
+        },
+        "C": {
+          "text": "Go raise the difference. The promises were made and finding money is a solvable problem.",
+          "facets": {"lf.strategic_bets": 1, "lc.prioritization": -1, "lf.adaptability": 1},
+          "tendencies": {"risk": 2, "velocity": 2}
+        },
+        "D": {
+          "text": "Put the shortfall to the planning team and let the people who own each piece decide what goes.",
+          "facets": {"lt.psychological_safety": 1, "lc.enterprise_alignment": 1, "lc.prioritization": -1},
+          "tendencies": {"counsel": 2, "orientation": 1}
+        }
+      }
+    },
+    {
+      "id": "S10b",
+      "domain_lead": "LC",
+      "pair": "S10",
+      "condition": "compressed",
+      "context": "COMPRESSED · Event day. The vendor no-shows and your keynote speaker's flight is cancelled, inside the same ten minutes. Two hundred people arrive in ninety minutes and your planning team is looking at you.",
+      "options": {
+        "A": {
+          "text": "Name the two problems out loud, assign each to a person by name with a check-in time, and take the harder one yourself.",
+          "facets": {"lp.judgment_under_stress": 2, "lc.prioritization": 2, "lt.communication": 1},
+          "tendencies": {"velocity": 2, "counsel": -1}
+        },
+        "B": {
+          "text": "Decide first what the event is for if only one of the two can be solved, then solve that one.",
+          "facets": {"lc.prioritization": 2, "lp.decision_architecture": 2, "lc.systems_thinking": 1},
+          "tendencies": {"information": -2, "velocity": -1}
+        },
+        "C": {
+          "text": "Get everyone in a huddle and work both problems together — more heads, faster.",
+          "facets": {"lt.trust_building": 1, "lp.judgment_under_stress": -1, "lc.prioritization": -1},
+          "tendencies": {"counsel": 2, "velocity": 1}
+        },
+        "D": {
+          "text": "Start fixing the vendor problem yourself immediately — it is the one you personally know how to solve.",
+          "facets": {"lc.prioritization": -2, "lt.talent_judgment": -1, "ls.emotional_regulation": -1},
+          "tendencies": {"velocity": 2, "counsel": -2}
+        }
+      }
+    },
+
+    {
+      "id": "S11",
+      "domain_lead": "LP",
+      "context": "You are the RA on duty. A resident tells you another resident has been talking about hurting themselves. The person who told you begs you not to say it came from them. It is 11:40 p.m.",
+      "options": {
+        "A": {
+          "text": "Act on it now through the protocol. Tell the reporter plainly that you cannot keep this one confidential and why.",
+          "facets": {"lp.ethical_clarity": 2, "lp.judgment_under_stress": 2, "lt.communication": 1},
+          "tendencies": {"velocity": 2, "risk": -2}
+        },
+        "B": {
+          "text": "Go check on the resident yourself first so you know what you are escalating.",
+          "facets": {"lp.judgment_under_stress": 1, "lp.decision_architecture": -1, "lp.ethical_clarity": 1},
+          "tendencies": {"information": 1, "counsel": -2}
+        },
+        "C": {
+          "text": "Call your supervisor before doing anything. This is above your level and the protocol says so.",
+          "facets": {"lp.decision_architecture": 2, "lp.ethical_clarity": 1, "lc.governance": 1},
+          "tendencies": {"counsel": 2, "risk": -2}
+        },
+        "D": {
+          "text": "Keep the confidence and watch the situation closely for a few days.",
+          "facets": {"lp.ethical_clarity": -2, "lp.judgment_under_stress": -2, "lp.decision_architecture": -1},
+          "tendencies": {"velocity": -2, "risk": 2}
+        }
+      }
+    },
+    {
+      "id": "S12",
+      "domain_lead": "LS",
+      "context": "You notice that in the last month you have been sharpest early and worst in the evening, and that every commitment you have broken was one you made in the evening.",
+      "options": {
+        "A": {
+          "text": "Change when you make commitments, not how hard you try to keep them. Move the decisions to the morning.",
+          "facets": {"ls.operating_rhythm": 2, "ls.self_awareness": 2, "ls.discipline": 1},
+          "tendencies": {"information": -1}
+        },
+        "B": {
+          "text": "Write the pattern down and watch it for another two weeks before changing anything.",
+          "facets": {"ls.bias_recognition": 2, "ls.self_awareness": 1, "lp.decision_architecture": 1},
+          "tendencies": {"velocity": -2, "information": -2}
+        },
+        "C": {
+          "text": "Fix the evenings. Sleep, phone, caffeine — treat it as a capacity problem and solve it directly.",
+          "facets": {"ls.discipline": 2, "lp.resilience": 1, "ls.operating_rhythm": 1},
+          "tendencies": {"velocity": 2}
+        },
+        "D": {
+          "text": "Tell the people who depend on you what you have noticed, so they stop relying on evening promises.",
+          "facets": {"ls.self_awareness": 2, "lt.trust_building": 2, "lt.communication": 1},
+          "tendencies": {"orientation": 2, "counsel": 2}
+        }
+      }
+    },
+    {
+      "id": "S13",
+      "domain_lead": "LF",
+      "context": "You used an AI tool to draft the structure of a major assignment, then rewrote it substantially in your own words and checked every source. Your instructor's policy is silent on this. A classmate says everyone does it and nobody declares it.",
+      "options": {
+        "A": {
+          "text": "Declare exactly what you used it for, unprompted, in a note on the submission.",
+          "facets": {"lp.ethical_clarity": 2, "lf.ai_fluency": 1, "lt.communication": 1},
+          "tendencies": {"risk": -1, "velocity": 1}
+        },
+        "B": {
+          "text": "Ask the instructor to clarify the policy before you submit, for everyone, not just you.",
+          "facets": {"lp.ethical_clarity": 2, "lc.governance": 2, "lt.trust_building": 1},
+          "tendencies": {"counsel": 2, "velocity": -1}
+        },
+        "C": {
+          "text": "Submit it. You verified everything and the substantive work is yours; a silent policy is not a rule.",
+          "facets": {"lf.ai_fluency": 1, "lp.ethical_clarity": -1, "lc.governance": -1},
+          "tendencies": {"risk": 2, "velocity": 2}
+        },
+        "D": {
+          "text": "Rewrite it from scratch without the tool so the question never has to be answered.",
+          "facets": {"lf.ai_fluency": -2, "lf.adaptability": -1, "ls.discipline": 1},
+          "tendencies": {"risk": -2, "velocity": -2}
+        }
+      }
+    },
+    {
+      "id": "S14",
+      "domain_lead": "LT",
+      "context": "Someone you lead is visibly better than you at the central skill of what your team does. Others have started routing questions to them instead of you.",
+      "options": {
+        "A": {
+          "text": "Formally hand them that part of the work, say publicly why, and lead the parts they do not.",
+          "facets": {"lt.talent_judgment": 2, "ls.self_awareness": 2, "lt.trust_building": 1},
+          "tendencies": {"orientation": 1, "counsel": 1}
+        },
+        "B": {
+          "text": "Get better. Close the gap yourself before it becomes a permanent fact about the team.",
+          "facets": {"ls.discipline": 1, "lt.talent_judgment": -2, "ls.self_awareness": -1},
+          "tendencies": {"velocity": 1, "counsel": -2}
+        },
+        "C": {
+          "text": "Ask them to teach the rest of the team, including you, in a standing session.",
+          "facets": {"lt.talent_judgment": 2, "lt.psychological_safety": 2, "lc.systems_thinking": 1},
+          "tendencies": {"counsel": 2, "orientation": 2}
+        },
+        "D": {
+          "text": "Re-route questions back through you so the team keeps a single point of decision.",
+          "facets": {"lt.talent_judgment": -2, "lt.psychological_safety": -2, "lc.governance": 1},
+          "tendencies": {"counsel": -2, "orientation": -1}
+        }
+      }
+    },
+    {
+      "id": "S15",
+      "domain_lead": "LP",
+      "context": "In a meeting, your supervisor states as fact something you know is wrong, and a decision is about to be made on it. There are six other people in the room, all of them senior to you.",
+      "options": {
+        "A": {
+          "text": "Say it in the room, once, factually, without framing it as a correction: here is what I am seeing.",
+          "facets": {"lp.ethical_clarity": 2, "lt.communication": 2, "ls.emotional_regulation": 1},
+          "tendencies": {"velocity": 2, "risk": 1}
+        },
+        "B": {
+          "text": "Ask a question that makes the error visible without naming it, and let them find it.",
+          "facets": {"lt.communication": 2, "lp.ethical_clarity": 1, "lt.psychological_safety": 1},
+          "tendencies": {"orientation": 2, "risk": -1}
+        },
+        "C": {
+          "text": "Catch them immediately after, before the decision is executed. Correcting a supervisor in public costs more than it buys.",
+          "facets": {"lp.ethical_clarity": -1, "lp.judgment_under_stress": -1, "lt.trust_building": 1},
+          "tendencies": {"velocity": -2, "risk": -2}
+        },
+        "D": {
+          "text": "Say nothing. You are the most junior person in the room and you might be the one who is wrong.",
+          "facets": {"lp.ethical_clarity": -2, "lp.judgment_under_stress": -2, "ls.self_awareness": -1},
+          "tendencies": {"velocity": -2, "counsel": -1, "risk": -2}
+        }
+      }
+    },
+    {
+      "id": "S16",
+      "domain_lead": "LC",
+      "context": "You graduate in six weeks. The role you have held for two years has no written description, and most of what makes it work lives in your head and your phone.",
+      "options": {
+        "A": {
+          "text": "Write down how it actually works — including the parts that are not official — and hand that over.",
+          "facets": {"lc.governance": 2, "lc.systems_thinking": 2, "lt.trust_building": 1},
+          "tendencies": {"information": -1, "velocity": -1}
+        },
+        "B": {
+          "text": "Pick a successor now and run the last six weeks with them shadowing every decision.",
+          "facets": {"lt.talent_judgment": 2, "lc.change_leadership": 2, "lt.trust_building": 1},
+          "tendencies": {"orientation": 2, "velocity": 1}
+        },
+        "C": {
+          "text": "Let the org choose its own successor and stay available by phone afterward.",
+          "facets": {"lt.psychological_safety": 1, "lc.governance": -1, "lc.change_leadership": -1},
+          "tendencies": {"counsel": 2, "risk": 1}
+        },
+        "D": {
+          "text": "Use the handover to fix the parts of the role that never worked, rather than transferring them intact.",
+          "facets": {"lc.change_leadership": 2, "lc.systems_thinking": 1, "lf.adaptability": 1},
+          "tendencies": {"risk": 1, "information": -1}
+        }
+      }
+    },
+
+    {
+      "id": "S17a",
+      "domain_lead": "LF",
+      "pair": "S17",
+      "condition": "composed",
+      "context": "COMPOSED · Halfway through the semester, clear evidence arrives that the approach your team committed to at the start is not going to work. You have eight weeks left, everyone is available, and nothing has been announced publicly yet.",
+      "options": {
+        "A": {
+          "text": "Name it to the team as a changed fact rather than a failure, and re-plan from where you actually are.",
+          "facets": {"lf.belief_revision": 2, "lf.adaptability": 2, "lt.psychological_safety": 1},
+          "tendencies": {"velocity": 1, "counsel": 1}
+        },
+        "B": {
+          "text": "Test the evidence hard before you move anyone. Being wrong about being wrong costs eight weeks.",
+          "facets": {"lf.strategic_bets": 2, "lp.decision_architecture": 1, "ls.bias_recognition": 1},
+          "tendencies": {"information": -2, "velocity": -2}
+        },
+        "C": {
+          "text": "Push through. The plan is committed, the team is bought in, and switching now costs more than finishing.",
+          "facets": {"lf.belief_revision": -2, "lf.adaptability": -2, "ls.discipline": 1},
+          "tendencies": {"velocity": -1, "risk": 2}
+        },
+        "D": {
+          "text": "Run both for two weeks and let the results decide rather than your reading of them.",
+          "facets": {"lf.strategic_bets": 1, "lf.adaptability": 1, "lc.prioritization": -1},
+          "tendencies": {"information": -1, "risk": -1}
+        }
+      }
+    },
+    {
+      "id": "S17b",
+      "domain_lead": "LF",
+      "pair": "S17",
+      "condition": "compressed",
+      "context": "COMPRESSED · Same evidence — but it lands the morning of the presentation where you announce the plan, you are on in two hours, the room includes people who backed you, and your team does not know yet.",
+      "options": {
+        "A": {
+          "text": "Present what you now believe, say plainly what changed and when you learned it, and take the questions.",
+          "facets": {"lf.belief_revision": 2, "lp.judgment_under_stress": 2, "lp.ethical_clarity": 1},
+          "tendencies": {"velocity": 2, "risk": 1}
+        },
+        "B": {
+          "text": "Tell your team in the next ten minutes so nobody hears it from the podium, then present the revision together.",
+          "facets": {"lt.trust_building": 2, "lf.belief_revision": 1, "lt.communication": 1},
+          "tendencies": {"counsel": 2, "orientation": 2}
+        },
+        "C": {
+          "text": "Present the original plan and flag the new evidence as an open question to resolve later.",
+          "facets": {"lf.belief_revision": -1, "lp.ethical_clarity": -1, "lp.decision_architecture": 1},
+          "tendencies": {"risk": -1, "velocity": -1}
+        },
+        "D": {
+          "text": "Present it as planned. Two hours is not enough to think properly and a half-revised plan is worse than either.",
+          "facets": {"lf.adaptability": -2, "lf.belief_revision": -2, "lp.judgment_under_stress": -1},
+          "tendencies": {"velocity": -2, "risk": 2}
+        }
+      }
+    }
+  ],
+  "behavioral": [
+    {"id": "B01", "facet": "ls.self_awareness", "reverse": false, "text": "In the last month I have asked someone I work with to tell me something I was getting wrong — and they actually answered."},
+    {"id": "B02", "facet": "ls.emotional_regulation", "reverse": true, "text": "People I work with can tell what kind of mood I am in within the first minute of seeing me."},
+    {"id": "B03", "facet": "ls.bias_recognition", "reverse": false, "text": "Before a decision that matters, I ask myself what I want to be true, and I treat that answer as a warning rather than a guide."},
+    {"id": "B04", "facet": "ls.discipline", "reverse": true, "text": "I start noticeably more things than I finish."},
+    {"id": "B05", "facet": "ls.operating_rhythm", "reverse": false, "text": "My week has protected, recurring time for work that matters, and it survives a heavy week."},
+    {"id": "B06", "facet": "lc.governance", "reverse": false, "text": "When my group splits up work, who decides what is written down somewhere everyone can see it."},
+    {"id": "B07", "facet": "lp.resilience", "reverse": false, "text": "After something goes genuinely badly, I am back to making good decisions within about a day."},
+    {"id": "B08", "facet": "lf.ai_fluency", "reverse": false, "text": "In the last month I have used an AI tool on my own real work and checked its output against a source I trust."},
+    {"id": "B09", "facet": "lt.accountability", "reverse": true, "text": "I have let a teammate's missed work slide because I did not want to have the conversation."},
+    {"id": "B10", "facet": "lf.belief_revision", "reverse": false, "text": "In the last year I have changed my position on something I had argued for publicly, because of evidence."},
+    {"id": "B11", "facet": "lt.trust_building", "reverse": false, "text": "People bring me problems while they are still small, before they become everyone's problem."},
+    {"id": "B12", "facet": "lt.communication", "reverse": true, "text": "After a meeting I run, people sometimes turn out to have left with different understandings of what was decided."},
+    {"id": "B13", "facet": "lc.prioritization", "reverse": false, "text": "If the three people I work with most each wrote down my top three priorities, the lists would broadly match."},
+    {"id": "B14", "facet": "lc.systems_thinking", "reverse": false, "text": "Before I change how something works, I write down what else the change is likely to affect."},
+    {"id": "B15", "facet": "lp.decision_architecture", "reverse": false, "text": "When I commit to something significant, I decide in advance what would make me stop."},
+    {"id": "B16", "facet": "lf.adaptability", "reverse": false, "text": "When a plan stops working partway through, I re-plan quickly without needing someone to tell me to."}
+  ]
+}

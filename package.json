@@ -1,0 +1,27 @@
+{
+  "name": "esi-api",
+  "version": "1.0.0",
+  "description": "Exceed Student Index \u2014 assessment delivery, deterministic scoring, instructor review console",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "local": "ESI_STORE=memory ADMIN_API_KEY=dev-admin-key node server_local.js",
+    "dev": "ESI_STORE=memory node server.js",
+    "demo": "ESI_STORE=memory ADMIN_API_KEY=dev-admin-key node server.js",
+    "test": "node --test tests/*.test.js",
+    "test:local": "node --test tests/local.test.js",
+    "migrate": "psql \"$DATABASE_URL\" -f migrations/2026-07-27_esi_schema.sql"
+  },
+  "engines": {
+    "node": ">=22.0.0"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^17.4.2",
+    "express": "^4.21.2",
+    "express-rate-limit": "^7.4.0",
+    "pg": "^8.13.1"
+  },
+  "license": "UNLICENSED",
+  "private": true
+}
