@@ -1,8 +1,8 @@
 {
-  "bank_version": "esi_statements@0.2.0",
+  "bank_version": "esi_statements@0.3.0",
   "note": "Student statement bank for the ESI Brief. Release-safety rules apply: no clinical language, no verdicts, no career prediction, no 'at risk'. Every line addresses the student directly.",
-  "band_note": "This is a starting position, not a verdict. You will take this again in Week 15, and the number that matters is what moved.",
-  "pressure_intro": "Five scenarios were shown to you twice — once with time, information and privacy, and once with the clock running and people watching. The difference between how you answered is the gap between your judgment on the page and your judgment in the room. Closing that distance is what this term is for.",
+  "band_note": "This is a starting position, not a verdict. You will take this again in Week 13, and the number that matters is what moved.",
+  "pressure_intro": "Five scenarios were shown to you twice — once with time, information and privacy, and once with the clock running and people watching. **Each domain rests on a single pair, so read these as direction, not distance.** What matters is which way the arrow points.",
   "pressure_readings": {
     "wide": "That is a wide gap, and it is the most useful thing this assessment can tell you. You reason well when you have room. The work of this term is making that reasoning survive conditions that do not give you room.",
     "moderate": "That is the kind of gap we expect most students to arrive with, and it is workable. You lose some quality under compression but not all of it.",
@@ -150,7 +150,7 @@
     "lc.prioritization": "Write your top three, then write what you are dropping to protect them.",
     "lc.change_leadership": "Ask the person most resistant to your plan what they see that you do not.",
     "lc.enterprise_alignment": "Get one thing done this month through someone who does not have to help you.",
-    "lc.governance": "Write down who decides what on your current team, and show it to them.",
+    "lc.governance": "Write down who decides what on your guild, and show it to them.",
     "lp.judgment_under_stress": "In the next Decision Lab, take the twenty seconds to say your criteria out loud before you decide.",
     "lp.ethical_clarity": "Write down, now, the thing you will not do — before a situation asks you.",
     "lp.decision_architecture": "On your next commitment, write the kill criteria before you start, and give them to someone.",
@@ -277,6 +277,137 @@
       "partner": "Pair with the person who keeps asking what happens after this. Ask them what you are not seeing before you lock the plan."
     }
   },
-  "footer": "This is a developmental instrument. It does not affect your grade, it is not a psychological or clinical assessment, and it is not used for admission, selection, or any decision about your standing. It is pre-norming: the bands are provisional and will be re-anchored as we collect data. You will take it again in Week 15 — the number that matters is what moved.",
-  "pressure_caveat": "Each domain's gap comes from a single paired scenario, so treat one domain's number as a signal rather than a measurement. The average across all five is the sturdier figure, and the Week 15 re-test is what turns either into evidence."
+  "footer": "This is a developmental instrument. It does not affect your grade, it is not a psychological or clinical assessment, and it is not used for admission, selection, or any decision about your standing. It is pre-norming: the bands are provisional and will be re-anchored as we collect data. You will take it again in Week 13 — the number that matters is what moved.",
+  "pressure_caveat": "Each domain's reading comes from one paired scenario. A single pair can only tell you which way you moved, not how far — so treat any one domain as a signal and the overall pattern as the sturdier figure. The Week 13 re-test is what turns either into evidence.",
+  "weights_note": "Leading Self and Leading Under Pressure carry the most weight because they are the two the live components can observe most directly. A low score on a lighter-weighted domain still matters — it is simply measured with less of this instrument behind it.",
+  "closing_line": "**Bring this brief to your Week 9 midpoint conference.** We will look at it together against what has actually happened by then.",
+  "term_paths_intro": "Everything above describes where you are. This is where the course does something about it. Each row names a week, something you will produce, and what an instructor will be watching for.",
+  "term_paths": {
+    "ls.self_awareness": {
+      "where": "J1 baseline; W9 midpoint 1:1; W14 statement re-record",
+      "produce": "Your Day 0 90-second statement, re-recorded in W14",
+      "watch": "Whether the two recordings describe the same leader"
+    },
+    "ls.emotional_regulation": {
+      "where": "W7 interruption drill; W8 Operation Blackout",
+      "produce": "Two recorded performances under deliberate interruption",
+      "watch": "Whether your voice and tempo hold when the pressure is engineered"
+    },
+    "ls.bias_recognition": {
+      "where": "W3 pre-mortem and post-mortem panel; J3",
+      "produce": "A pre-mortem that names what you wanted to be true",
+      "watch": "Whether your analysis ever surprises you on paper"
+    },
+    "ls.discipline": {
+      "where": "The weekly journal cadence; Decision File Plan",
+      "produce": "Sixteen entries on time, at the word ceiling",
+      "watch": "The streak — discipline leaves a visible trace here"
+    },
+    "ls.operating_rhythm": {
+      "where": "W2 framing week; guild practice blocks",
+      "produce": "A written weekly operating rhythm for your guild role",
+      "watch": "Whether the rhythm survives Week 8"
+    },
+    "lt.trust_building": {
+      "where": "W4 outdoor task (lead removed mid-way); guild rotation",
+      "produce": "An AAR on what happened when the lead stepped away",
+      "watch": "Whether the team kept moving without the formal lead"
+    },
+    "lt.psychological_safety": {
+      "where": "W6 Reception Room; guild AARs",
+      "produce": "A documented moment you made dissent cheaper",
+      "watch": "Whether quiet teammates speak in your AARs"
+    },
+    "lt.talent_judgment": {
+      "where": "Guild rotation; W11 A-DMP staffing case",
+      "produce": "A written who-carries-what map before the capstone",
+      "watch": "Whether assignments track demonstrated capability or confidence"
+    },
+    "lt.communication": {
+      "where": "W7 composure drills; W14 hostile Q&A",
+      "produce": "The 90-second statement, and the capstone brief-back",
+      "watch": "Whether the message survives interruption intact"
+    },
+    "lt.accountability": {
+      "where": "W6 Reception Room; guild peer critique",
+      "produce": "One standard you held when it cost you something",
+      "watch": "Reception Room criterion 6 at W8"
+    },
+    "lc.systems_thinking": {
+      "where": "W11 automation surprise; Decision File Diagnose",
+      "produce": "A second-order effects map for your capstone case",
+      "watch": "Whether effects two steps out appear before they are pointed out"
+    },
+    "lc.prioritization": {
+      "where": "W8 crisis lab triage; Decision File Choose",
+      "produce": "A triage log from Blackout with your cut list",
+      "watch": "What you dropped, and whether you said so out loud"
+    },
+    "lc.change_leadership": {
+      "where": "W13 stakeholder work; Decision File Communicate",
+      "produce": "A stakeholder map with resistance named",
+      "watch": "Whether you move people through resistance or around it"
+    },
+    "lc.enterprise_alignment": {
+      "where": "W13 real stakeholder interview; guild cross-briefs",
+      "produce": "An interview brief-back from someone you do not lead",
+      "watch": "Whether their interests appear in your plan unprompted"
+    },
+    "lc.governance": {
+      "where": "W4 commander's intent; Decision File Plan",
+      "produce": "A written map of who decides what, shown to your guild",
+      "watch": "Whether the map exists anywhere outside your head"
+    },
+    "lp.judgment_under_stress": {
+      "where": "W2 PressureLab 1; W8 Operation Blackout",
+      "produce": "Two recorded compressed decisions with your rationale",
+      "watch": "Whether quality holds as the time collapses"
+    },
+    "lp.ethical_clarity": {
+      "where": "W5 Weighing Room and The Unlawful Order; J5",
+      "produce": "A defended decision weighed on fairness, transparency, accountability and harm",
+      "watch": "Whether the line was drawn before the pressure arrived"
+    },
+    "lp.decision_architecture": {
+      "where": "W2 OODA/RPD framing; Decision File Choose",
+      "produce": "A decision memo with kill criteria stated in advance",
+      "watch": "What would change your mind — asked of every case"
+    },
+    "lp.resilience": {
+      "where": "W8 Blackout recovery; W14 hostile Q&A",
+      "produce": "An AAR on your worst moment of the term",
+      "watch": "Recovery time, not the stumble"
+    },
+    "lf.strategic_imagination": {
+      "where": "W3 pre-mortem; W13 drift; Decision File Frame",
+      "produce": "A pre-mortem naming three ways it fails, and an assumption audit",
+      "watch": "Whether your assumptions are labelled as assumptions"
+    },
+    "lf.ai_fluency": {
+      "where": "W10 hallucination hunt; W11 A-DMP live run",
+      "produce": "A verified claim set — what you checked and how",
+      "watch": "Whether you can say what the model got wrong and how you know"
+    },
+    "lf.belief_revision": {
+      "where": "W6 Reception Room and J6; W13 devil’s advocate and J9",
+      "produce": "J9 argues the position you came in opposing",
+      "watch": "Reception Room criterion 6 at W8 — whether you did the thing you said you would"
+    },
+    "lf.strategic_bets": {
+      "where": "W11 automation surprise; Decision File Choose",
+      "produce": "One commitment made before the picture was complete, with reasoning",
+      "watch": "Whether you can commit without certainty and say why"
+    },
+    "lf.adaptability": {
+      "where": "W4 lead-removed task; W8 injects",
+      "produce": "An AAR on the moment the plan died",
+      "watch": "Time between the plan breaking and a new one existing"
+    }
+  },
+  "pressure_path": {
+    "where": "W2 PressureLab 1; W7 interruption drill; W8 Operation Blackout",
+    "produce": "Three recorded compressed performances across the term",
+    "watch": "Whether the gap closes by W13 — this is the headline number in your December readout"
+  },
+  "lab_path_label": "Where your strength gets tested."
 }

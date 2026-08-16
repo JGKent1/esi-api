@@ -332,7 +332,7 @@ function renderBrief(profile, subject = {}) {
 
   L.push(`# Student Readiness Brief`);
   L.push('');
-  L.push(`**${name}**${subject.cohort ? ` · ${subject.cohort}` : ''}${subject.window ? ` · ${subject.window === 'wk15' ? 'Week 15' : 'Day 0'} administration` : ''}`);
+  L.push(`**${name}**${subject.cohort ? ` · ${subject.cohort}` : ''}${subject.window ? ` · ${subject.window === 'wk15' ? 'Week 13' : 'Day 0'} administration` : ''}`);
   L.push('');
   L.push(`Exceed Student Index v1.0 · structured developmental diagnostic · pre-norming`);
   L.push('');
@@ -352,29 +352,42 @@ function renderBrief(profile, subject = {}) {
     L.push(`| ${DOMAINS[dk].name} | ${p.domains[dk]} | ${DOMAINS[dk].weight.toFixed(2)} |`);
   }
   L.push('');
+  L.push(`_${STATEMENTS.weights_note}_`);
+  L.push('');
 
   L.push(`## The page and the room`);
   L.push('');
   L.push(STATEMENTS.pressure_intro);
   L.push('');
-  L.push('| Domain | Composed | Compressed | Gap |');
-  L.push('|---|---:|---:|---:|');
+  // Each domain rests on ONE paired scenario: a two-point reading shown as a
+  // number invites false precision. Students get direction; the numbers stay
+  // in the instructor console and the CSV export (v3, patch 4).
+  const mark = (v) => (v >= 50 ? '●' : '○');
+  L.push('| Domain | On the page | In the room |  |');
+  L.push('|---|:-:|:-:|---|');
   for (const dk of DOMAIN_KEYS) {
     const x = p.pressure.by_domain[dk];
-    L.push(`| ${DOMAINS[dk].name} | ${x.composed} | ${x.compressed} | ${x.delta > 0 ? '+' : ''}${x.delta} |`);
+    const pageStronger = x.delta > 0;
+    const note = pageStronger ? '**page stronger — watch this**'
+      : x.delta < 0 ? 'room stronger' : 'no difference';
+    const dn = pageStronger ? `**${DOMAINS[dk].name}**` : DOMAINS[dk].name;
+    L.push(`| ${dn} | ${mark(x.composed)} | ${mark(x.compressed)} | ${note} |`);
   }
   L.push('');
+  const deltas = DOMAIN_KEYS.map((dk) => p.pressure.by_domain[dk].delta);
+  const nPage = deltas.filter((d) => d > 0).length;
+  const nRoom = deltas.filter((d) => d < 0).length;
   const ov = p.pressure.overall;
   const pk = ov >= 18 ? 'wide' : ov >= 8 ? 'moderate' : ov >= -3 ? 'narrow' : 'inverted';
-  L.push(`**Average gap ${ov > 0 ? '+' : ''}${ov}.** ${STATEMENTS.pressure_readings[pk]}`);
+  L.push(`**${nPage} of 5 domains ${nPage === 1 ? 'was' : 'were'} stronger on the page; ${nRoom} ${nRoom === 1 ? 'was' : 'were'} stronger in the room.** ${STATEMENTS.pressure_readings[pk]}`);
   L.push('');
-  const widest = DOMAIN_KEYS.reduce((a, b) =>
-    p.pressure.by_domain[b].delta > p.pressure.by_domain[a].delta ? b : a);
-  // Only assert a loss pattern when the widest delta is a real gap (the
-  // "moderate" floor). A zero or negative widest delta means nothing was
-  // lost under compression, and the note would contradict the table above.
-  if (p.pressure.by_domain[widest].delta >= 8) {
-    L.push(`Your widest gap is in **${DOMAINS[widest].name}**. ${STATEMENTS.pressure_domain_note[widest]}`);
+  // The line that matters is the one where composed judgment beat compressed —
+  // the direction this course exists to close. Rendered only when it happened.
+  const pagey = DOMAIN_KEYS.filter((dk) => p.pressure.by_domain[dk].delta > 0);
+  if (pagey.length) {
+    const watch = pagey.reduce((a, b) =>
+      p.pressure.by_domain[b].delta > p.pressure.by_domain[a].delta ? b : a);
+    L.push(`**${DOMAINS[watch].name}** is where your page answer beat your room answer by the most. That direction — stronger with time than without it — is the one this course is built to close. ${STATEMENTS.pressure_domain_note[watch]}`);
     L.push('');
   }
   L.push(`_${STATEMENTS.pressure_caveat}_`);
@@ -382,7 +395,7 @@ function renderBrief(profile, subject = {}) {
 
   L.push(`## Your shape`);
   L.push('');
-  L.push(`**${p.archetype.name}** — ${DOMAINS[p.signature_family].name} leading, ${DOMAINS[p.domain_order[1]].name} behind it.`);
+  L.push(`**${p.archetype.name}** — ${DOMAINS[p.signature_family].name} out front, with ${DOMAINS[p.domain_order[1]].name} close behind it. Your lowest domain is **${DOMAINS[p.exposure_domain].name}** (${p.domains[p.exposure_domain]}).`);
   L.push('');
   L.push(p.archetype.narrative);
   L.push('');
@@ -398,8 +411,9 @@ function renderBrief(profile, subject = {}) {
 
   L.push(`## What is working`);
   L.push('');
+  const facetDomain = (f) => DOMAINS[f.slice(0, 2).toUpperCase()].name;
   for (const f of p.strength_facets) {
-    L.push(`- **${facetLabel(f)}** — ${STATEMENTS.strengths[f] || STATEMENTS.strengths._default}`);
+    L.push(`- **${facetLabel(f)}** _(${facetDomain(f)})_ — ${STATEMENTS.strengths[f] || STATEMENTS.strengths._default}`);
   }
   L.push('');
 
@@ -410,7 +424,7 @@ function renderBrief(profile, subject = {}) {
   L.push(`_${STATEMENTS.vulnerabilities._default}_`);
   L.push('');
   for (const f of p.exposure_facets) {
-    L.push(`- **${facetLabel(f)}** — ${STATEMENTS.vulnerabilities[f] || STATEMENTS.vulnerabilities._default}`);
+    L.push(`- **${facetLabel(f)}** _(${facetDomain(f)})_ — ${STATEMENTS.vulnerabilities[f] || STATEMENTS.vulnerabilities._default}`);
   }
   L.push('');
 
@@ -420,7 +434,28 @@ function renderBrief(profile, subject = {}) {
     L.push(`${i + 1}. ${STATEMENTS.development[f] || STATEMENTS.development._default}`);
   });
   L.push('');
-  L.push(`**Practice path.** ${STATEMENTS.lab_path[p.signature_family]}`);
+
+  // "Your term, from here" — the section that answers what to DO about all of
+  // the above. Keyed by the same bottom-three facets the priorities already
+  // selected; no new logic, no new measurement (v3, patch 5).
+  L.push(`## Your term, from here`);
+  L.push('');
+  L.push(STATEMENTS.term_paths_intro);
+  L.push('');
+  L.push('| What you are working on | Where it happens | What you will produce | What we watch for |');
+  L.push('|---|---|---|---|');
+  for (const f of p.exposure_facets) {
+    const tp = STATEMENTS.term_paths[f];
+    if (tp) L.push(`| **${facetLabel(f)}** | ${tp.where} | ${tp.produce} | ${tp.watch} |`);
+  }
+  if (pagey.length) {
+    const watch = pagey.reduce((a, b) =>
+      p.pressure.by_domain[b].delta > p.pressure.by_domain[a].delta ? b : a);
+    const pp = STATEMENTS.pressure_path;
+    L.push(`| **Your page-vs-room gap** in ${DOMAINS[watch].name} | ${pp.where} | ${pp.produce} | ${pp.watch} |`);
+  }
+  L.push('');
+  L.push(`**${STATEMENTS.lab_path_label}** ${STATEMENTS.lab_path[p.signature_family]}`);
   if (p.facets['lp.ethical_clarity'].unit < 0.40) {
     L.push('');
     L.push(`**Weighing Room flag.** ${STATEMENTS.ethics_gate}`);
@@ -432,6 +467,8 @@ function renderBrief(profile, subject = {}) {
   L.push(`Your lowest-scoring domain is ${DOMAINS[p.exposure_domain].name}. ${p.counterpart.intro}`);
   L.push('');
   L.push(`**On your next team:** ${p.counterpart.partner}`);
+  L.push('');
+  L.push(STATEMENTS.closing_line);
   L.push('');
 
   L.push('---');

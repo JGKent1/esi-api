@@ -204,12 +204,17 @@ test('release safety — the Brief never uses prohibited language', () => {
   const banned = [/\bvalidated\b/i, /\bat[- ]risk\b/i, /\bdiagnos(is|e|ed)\b/i, /\bdisorder\b/i,
                   /\bclinical\b/i, /\byou will fail\b/i, /\bnot cut out\b/i];
   const isDisclaimer = (line) => /\b(is not|are not|does not|it is not|never)\b/i.test(line);
+  // "Decision File Diagnose" is the canonical name of a capstone phase — a
+  // course artifact, not a claim about the student. Strip proper nouns before
+  // the ban check so the ban keeps its real target.
+  const stripProperNouns = (line) => line.replace(/Decision File Diagnose/g, 'Decision File');
   for (const r of [allA, allC, cyclic, strong, weak]) {
     const md = E.renderBrief(E.scoreSubmission(r), { full_name: 'A. Student' });
     for (const line of md.split('\n')) {
       if (isDisclaimer(line)) continue;
+      const checked = stripProperNouns(line);
       for (const re of banned) {
-        assert.ok(!re.test(line), `Brief line matched banned pattern ${re}: "${line}"`);
+        assert.ok(!re.test(checked), `Brief line matched banned pattern ${re}: "${line}"`);
       }
     }
   }

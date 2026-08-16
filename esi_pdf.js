@@ -60,35 +60,81 @@ function ensureRoom(doc, needed) {
 function drawTable(doc, header, rows) {
   const w = doc.page.width - M * 2;
   const n = header.length;
-  // First column gets the leftover; numeric columns get a fixed width.
-  const numW = Math.min(72, (w * 0.55) / Math.max(1, n - 1));
-  const firstW = w - numW * (n - 1);
-  const widths = [firstW, ...Array(n - 1).fill(numW)];
-  const rowH = 17;
+  const body = rows.length ? rows : [header.map(() => '')];
+  const clean = (t) => String(t).replace(/\*\*/g, '');
 
-  ensureRoom(doc, rowH * (rows.length + 1) + 10);
-  let y = doc.y + 2;
+  // Column typing from the body: numeric → right-aligned narrow; single-symbol
+  // (●/○) → centred narrow; otherwise prose. Widths: compact columns get what
+  // they need, prose columns share the rest in proportion to their content.
+  const colType = header.map((_, i) => {
+    const vals = body.map((r) => clean(r[i] || '').trim());
+    if (vals.every((v) => /^[+\-]?\d+(\.\d+)?$/.test(v) || v === '')) return 'num';
+    if (vals.every((v) => /^[●○]$/.test(v) || v === '')) return 'sym';
+    return 'text';
+  });
+  const need = header.map((h, i) => {
+    if (colType[i] === 'num') return Math.max(46, doc.widthOfString(clean(h)) + 14);
+    if (colType[i] === 'sym') return Math.max(52, doc.widthOfString(clean(h)) + 14);
+    const longest = Math.max(clean(h).length, ...body.map((r) => clean(r[i] || '').length));
+    return longest; // relative weight for prose columns
+  });
+  const compact = need.reduce((a, x, i) => a + (colType[i] === 'text' ? 0 : x), 0);
+  const proseWeight = need.reduce((a, x, i) => a + (colType[i] === 'text' ? x : 0), 0) || 1;
+  const proseSpace = w - compact;
+  const widths = need.map((x, i) => (colType[i] === 'text' ? Math.max(70, (x / proseWeight) * proseSpace) : x));
 
-  const cell = (txt, x, cw, bold, right) => {
-    doc.font(bold ? 'Helvetica-Bold' : 'Helvetica').fontSize(9.5).fillColor(INK)
-      .text(String(txt).replace(/\*\*/g, ''), x + 4, y + 4.5,
-        { width: cw - 8, align: right ? 'right' : 'left', lineBreak: false });
+  const FS = 9.5, PAD = 5;
+  const rowHeight = (cells, bold) => {
+    doc.font(bold ? 'Helvetica-Bold' : 'Helvetica').fontSize(FS);
+    let h = 0;
+    cells.forEach((c, i) => {
+      h = Math.max(h, doc.heightOfString(clean(c || ''), { width: widths[i] - PAD * 2 }));
+    });
+    return h + PAD * 2;
+  };
+  const bottom = () => doc.page.height - M - 24;
+
+  const drawRow = (cells, y, bold, boldCells) => {
+    let x = M;
+    cells.forEach((c, i) => {
+      const v = clean(c || '').trim();
+      // Standard-14 fonts have no U+25CF/U+25CB glyphs — draw the direction
+      // markers as vector circles instead of text.
+      if (colType[i] === 'sym' && (v === '●' || v === '○')) {
+        const cx = x + widths[i] / 2, cy = y + PAD + FS / 2, r = 3.4;
+        if (v === '●') doc.circle(cx, cy, r).fillColor(INK).fill();
+        else doc.circle(cx, cy, r).lineWidth(1).strokeColor(INK).stroke();
+      } else {
+        const cellBold = bold || (boldCells && /\*\*/.test(String(c || '')));
+        doc.font(cellBold ? 'Helvetica-Bold' : 'Helvetica').fontSize(FS).fillColor(INK)
+          .text(v, x + PAD, y + PAD, {
+            width: widths[i] - PAD * 2,
+            align: colType[i] === 'num' ? 'right' : colType[i] === 'sym' ? 'center' : 'left',
+          });
+      }
+      x += widths[i];
+    });
+  };
+  const headerH = rowHeight(header, true);
+  const drawHeader = () => {
+    const y = doc.y + 2;
+    drawRow(header, y, true, false);
+    doc.moveTo(M, y + headerH - 1).lineTo(M + w, y + headerH - 1).lineWidth(0.8).strokeColor(INK).stroke();
+    doc.y = y + headerH;
   };
 
-  let x = M;
-  header.forEach((h, i) => { cell(h, x, widths[i], true, i > 0); x += widths[i]; });
-  doc.moveTo(M, y + rowH - 2).lineTo(M + w, y + rowH - 2).lineWidth(0.8).strokeColor(INK).stroke();
-  y += rowH;
-
+  if (doc.y + headerH + rowHeight(body[0], false) > bottom()) doc.addPage();
+  drawHeader();
   rows.forEach((r) => {
-    x = M;
-    r.forEach((c, i) => { cell(c, x, widths[i], false, i > 0); x += widths[i]; });
-    doc.moveTo(M, y + rowH - 2).lineTo(M + w, y + rowH - 2).lineWidth(0.4).strokeColor(RULE).stroke();
-    y += rowH;
+    const rh = rowHeight(r, false);
+    if (doc.y + rh > bottom()) { doc.addPage(); drawHeader(); }
+    const y = doc.y;
+    drawRow(r, y, false, true);
+    doc.moveTo(M, y + rh - 1).lineTo(M + w, y + rh - 1).lineWidth(0.4).strokeColor(RULE).stroke();
+    doc.y = y + rh;
   });
-
   doc.x = M;
-  doc.y = y + 6;
+  doc.y += 6;
 }
 
 function watermark(doc) {
@@ -113,8 +159,6 @@ function renderBriefPdf(sub, out) {
     info: { Title: `ESI Brief — ${sub.full_name || sub.student_ref}`, Author: 'Exceed Student Index' } });
   doc.pipe(out);
 
-  if (!released) watermark(doc);
-  doc.on('pageAdded', () => { if (!released) watermark(doc); });
 
   const lines = String(sub.report_text || '').split('\n');
   let i = 0;
@@ -186,18 +230,25 @@ function renderBriefPdf(sub, out) {
     i++;
   }
 
-  // Footer on every page: identity + release stamp + page number.
+  // Final pass over the buffered pages: watermark (drafts) and footer. Done
+  // here — never mid-flow — so no font/position state can leak into the text
+  // layer, and with the bottom margin lifted so writing in the margin zone
+  // can never trigger an automatic page add (the 9-pages-for-3 bug).
   const range = doc.bufferedPageRange();
   const stamp = released
     ? `Released ${String(sub.released_at || '').slice(0, 10)} by ${sub.released_by || '—'}`
     : 'DRAFT — pending instructor review; not a released record';
   for (let p = range.start; p < range.start + range.count; p++) {
     doc.switchToPage(p);
+    const savedBottom = doc.page.margins.bottom;
+    doc.page.margins.bottom = 0;
+    if (!released) watermark(doc);
     doc.font('Helvetica').fontSize(8).fillColor(MUTED)
-      .text(`${sub.full_name || sub.student_ref} · ${sub.cohort} · ${sub.window === 'wk15' ? 'Week 15' : 'Day 0'} · ${stamp}`,
+      .text(`${sub.full_name || sub.student_ref} · ${sub.cohort} · ${sub.window === 'wk15' ? 'Week 13' : 'Day 0'} · ${stamp}`,
         M, doc.page.height - M + 14, { width: doc.page.width - M * 2 - 60, lineBreak: false })
       .text(`${p - range.start + 1} / ${range.count}`,
         doc.page.width - M - 50, doc.page.height - M + 14, { width: 50, align: 'right', lineBreak: false });
+    doc.page.margins.bottom = savedBottom;
   }
 
   doc.end();
