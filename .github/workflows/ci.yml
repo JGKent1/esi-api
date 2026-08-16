@@ -1,0 +1,59 @@
+name: CI
+
+# Every push and PR runs the full suite twice over:
+#   1. The 48 unit/contract tests against the in-memory store.
+#   2. The Postgres integration tests (tests/pg.test.js) against a real
+#      throwaway database with the production migration applied — the layer
+#      that would have caught the reserved-word `window` bug before deploy.
+#
+# Railway note: to make a green run a *deploy gate*, enable
+# "Wait for CI" on the esi-web service settings in Railway — it will then
+# hold each deploy until this workflow passes on the pushed commit.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: esi
+          POSTGRES_PASSWORD: esi
+          POSTGRES_DB: esi_test
+        ports: ['5432:5432']
+        options: >-
+          --health-cmd "pg_isready -U esi"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: '.nvmrc'
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Unit and contract tests (in-memory store)
+        run: npm test
+
+      - name: Apply production migration to throwaway Postgres
+        env:
+          PGPASSWORD: esi
+        run: psql -h localhost -U esi -d esi_test -v ON_ERROR_STOP=1 -f migrations/2026-07-27_esi_schema.sql
+
+      - name: Postgres integration tests
+        env:
+          DATABASE_URL: postgresql://esi:esi@localhost:5432/esi_test
+          ESI_STORE: postgres
+        run: node --test tests/pg.test.js
