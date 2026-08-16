@@ -175,7 +175,7 @@
   function clearDraft() { try { localStorage.removeItem(KEY); } catch (e) {} }
 
   /* ── deterministic-ish shuffle, seeded by item id ──────────────────
-     Option order is randomised within a presentation so that position
+     Option order is randomized within a presentation so that position
      does not become a cue. The seed is the item id, so a student who
      reloads sees the same order and does not have to re-read.          */
   function seeded(id) {
@@ -359,7 +359,7 @@
 
   var REASON = {
     missing: 'This link is missing its access code. Use the exact link your instructor sent you.',
-    unknown: 'This link is not recognised. Check that you copied the whole thing, including everything after the question mark.',
+    unknown: 'This link is not recognized. Check that you copied the whole thing, including everything after the question mark.',
     used:    'This link has already been used. Each administration is single-use — if you need it reopened, ask your instructor.',
     expired: 'This link has expired. Ask your instructor to issue a new one.'
   };

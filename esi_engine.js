@@ -22,7 +22,7 @@ const STATEMENTS = require('./esi_engine_data/esi_statements.json');
 
 const VERSIONS = Object.freeze({
   engine:     'esi_engine@1.0.0',
-  item_bank:  'esi_items_v1_0',
+  item_bank:  'esi_items_v1_1',  // v1_1: US-English orthography pass, 17 Aug 2026 (no coding changes)
   statements: STATEMENTS.bank_version,
   depth_bank: 'esi_depth_v1_0',
 });
@@ -47,7 +47,7 @@ const BANDS = Object.freeze([
   // 'Building' — renamed from 'Developing' 17 Aug 2026: the Quality scoring
   // card also has a 'Developing' band and students would fuse the two scales.
   { min: 58, name: 'Building',
-    gloss: 'Capable when conditions are favourable; inconsistent when they are not.' },
+    gloss: 'Capable when conditions are favorable; inconsistent when they are not.' },
   { min: 0,  name: 'Foundational',
     gloss: 'Early. The building blocks are the work of this term. A starting line, not a verdict.' },
 ]);

@@ -1,5 +1,5 @@
 {
-  "bank_version": "esi_statements@0.4.0",
+  "bank_version": "esi_statements@0.5.0",
   "note": "Student statement bank for the ESI Brief. Release-safety rules apply: no clinical language, no verdicts, no career prediction, no 'at risk'. Every line addresses the student directly.",
   "band_note": "This is a starting position, not a verdict. You will take this again in Week 13, and the number that matters is what moved.",
   "pressure_intro": "Five scenarios were shown to you twice — once with time, information and privacy, and once with the clock running and people watching. **Each domain rests on a single pair, so read these as direction, not distance.** What matters is which way the arrow points.",
@@ -92,7 +92,7 @@
     "lt.talent_judgment": "You read what people are actually good at rather than who is loudest. Lean on this when you build teams.",
     "lt.communication": "People leave your conversations with the same understanding you had. That is much less common than it sounds.",
     "lt.accountability": "You will say the uncomfortable thing to someone who needs to hear it. Do not let that get filed as being difficult.",
-    "lc.systems_thinking": "You see the machinery behind the behaviour instead of stopping at the person in front of you.",
+    "lc.systems_thinking": "You see the machinery behind the behavior instead of stopping at the person in front of you.",
     "lc.prioritization": "You can say what does not get done. Most people can only say what does.",
     "lc.change_leadership": "You move people through resistance rather than around it.",
     "lc.enterprise_alignment": "You get people who do not answer to you moving in the same direction. That is the hardest thing on this list.",
@@ -119,23 +119,23 @@
     "lt.talent_judgment": "You tend to read confidence as capability. They come apart at exactly the wrong moment.",
     "lt.communication": "People leave your conversations with different versions of what was decided. Say the decision out loud, last, in one sentence.",
     "lt.accountability": "You let things run past the point where saying something would have been easy. It never gets easier by waiting.",
-    "lc.systems_thinking": "Your analysis stops at the person. The structure that produced the behaviour is where the fix is.",
+    "lc.systems_thinking": "Your analysis stops at the person. The structure that produced the behavior is where the fix is.",
     "lc.prioritization": "Everything is important, which means nothing is. Name what does not get done this week.",
     "lc.change_leadership": "You announce change and expect it to travel. Resistance is information about your plan.",
-    "lc.enterprise_alignment": "You default to authority you do not have. Practise moving people who do not have to listen.",
+    "lc.enterprise_alignment": "You default to authority you do not have. Practice moving people who do not have to listen.",
     "lc.governance": "The map of who decides what lives only in your head. When you leave the room, it leaves with you.",
     "lp.judgment_under_stress": "Your reasoning degrades faster than you notice under pressure. The Decision Labs will show you this in a way no journal can.",
     "lp.ethical_clarity": "Your ethical reasoning bends under time pressure. Decide your line while it is cheap.",
     "lp.decision_architecture": "You commit without knowing what would make you stop. That is how good people ride bad decisions all the way down.",
     "lp.resilience": "One bad outcome costs you more than one day of quality. Watch the recovery, not the failure.",
-    "lf.strategic_imagination": "You reason inside the situation as given. Practise asking what would have to be true for it to be different.",
+    "lf.strategic_imagination": "You reason inside the situation as given. Practice asking what would have to be true for it to be different.",
     "lf.ai_fluency": "You are either avoiding the tools or trusting them unchecked. Both are the same mistake at different volumes.",
     "lf.belief_revision": "New evidence rearranges your argument without changing your conclusion.",
     "lf.strategic_bets": "You wait for certainty that is not coming, or commit without naming what would make you stop.",
     "lf.adaptability": "When the plan breaks you keep executing it. Attachment to a plan is not commitment."
   },
   "development": {
-    "_default": "Pick one behaviour here, name the trigger, and make it verifiable by someone else by Friday.",
+    "_default": "Pick one behavior here, name the trigger, and make it verifiable by someone else by Friday.",
     "ls.self_awareness": "Ask one person who works with you what you are getting wrong, and do not respond for twenty-four hours.",
     "ls.emotional_regulation": "Name your three social-pressure triggers as observable events, not moods, and write what you will do in the first five seconds of each.",
     "ls.bias_recognition": "Before your next decision that matters, write down what you want to be true, and treat that sentence as a warning.",
@@ -145,7 +145,7 @@
     "lt.psychological_safety": "In your next group meeting, ask for the strongest objection to your own position before you defend it.",
     "lt.talent_judgment": "Name what each person on your current team is genuinely best at, then check it against what they are actually doing.",
     "lt.communication": "End every meeting you run by saying the decision out loud, in one sentence, and asking whether that is what everyone heard.",
-    "lt.accountability": "Have the conversation you have been avoiding this week. Name the specific behaviour, not the pattern.",
+    "lt.accountability": "Have the conversation you have been avoiding this week. Name the specific behavior, not the pattern.",
     "lc.systems_thinking": "Before your next change, write down three things it will affect that nobody asked you about.",
     "lc.prioritization": "Write your top three, then write what you are dropping to protect them.",
     "lc.change_leadership": "Ask the person most resistant to your plan what they see that you do not.",
@@ -176,7 +176,7 @@
     },
     "LS-LT": {
       "name": "The Anchor",
-      "narrative": "You lead from a settled centre and people feel it before you say anything. Your risk is that steadiness becomes a place to hide from harder structural work."
+      "narrative": "You lead from a settled center and people feel it before you say anything. Your risk is that steadiness becomes a place to hide from harder structural work."
     },
     "LS-LC": {
       "name": "The Quiet Architect",
@@ -381,7 +381,7 @@
     "lf.strategic_imagination": {
       "where": "W3 pre-mortem; W13 drift; Decision File Frame",
       "produce": "A pre-mortem naming three ways it fails, and an assumption audit",
-      "watch": "Whether your assumptions are labelled as assumptions"
+      "watch": "Whether your assumptions are labeled as assumptions"
     },
     "lf.ai_fluency": {
       "where": "W10 hallucination hunt; W11 A-DMP live run",
