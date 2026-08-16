@@ -1,7 +1,7 @@
 {
   "name": "esi-api",
   "version": "1.0.0",
-  "description": "Exceed Student Index \u2014 assessment delivery, deterministic scoring, instructor review console",
+  "description": "Exceed Student Index — assessment delivery, deterministic scoring, instructor review console",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
@@ -20,6 +20,7 @@
     "dotenv": "^17.4.2",
     "express": "^4.21.2",
     "express-rate-limit": "^7.4.0",
+    "pdfkit": "^0.19.1",
     "pg": "^8.13.1"
   },
   "license": "UNLICENSED",

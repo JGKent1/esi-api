@@ -20,6 +20,7 @@ const rateLimit = require('express-rate-limit');
 const engine = require('./esi_engine');
 const tokens = require('./esi_tokens');
 const { requireAdmin } = require('./admin_auth');
+const { renderBriefPdf } = require('./esi_pdf');
 const { createStore } = require('./store');
 
 const app = express();
@@ -188,6 +189,19 @@ admin.get('/submissions', async (req, res) => {
       signature_pair: p.signature_pair,
     };
   }));
+});
+
+// Printable Brief. Draft PDFs carry a NOT RELEASED watermark on every page,
+// so a printed draft can never be mistaken for a released educational record.
+admin.get('/submissions/:id/brief.pdf', async (req, res) => {
+  const r = await store.getSubmission(req.params.id);
+  if (!r) return res.status(404).json({ error: 'not found' });
+  const parse = (x) => (typeof x === 'string' ? JSON.parse(x) : x);
+  const safe = String(r.student_ref || 'brief').replace(/[^A-Za-z0-9_-]+/g, '_');
+  res.setHeader('Content-Type', 'application/pdf');
+  res.setHeader('Content-Disposition',
+    `attachment; filename="ESI_Brief_${safe}_${r.window}${r.status === 'released' ? '' : '_DRAFT'}.pdf"`);
+  renderBriefPdf({ ...r, versions: parse(r.versions) }, res);
 });
 
 admin.get('/submissions/:id', async (req, res) => {
