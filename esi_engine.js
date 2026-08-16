@@ -370,8 +370,13 @@ function renderBrief(profile, subject = {}) {
   L.push('');
   const widest = DOMAIN_KEYS.reduce((a, b) =>
     p.pressure.by_domain[b].delta > p.pressure.by_domain[a].delta ? b : a);
-  L.push(`Your widest gap is in **${DOMAINS[widest].name}**. ${STATEMENTS.pressure_domain_note[widest]}`);
-  L.push('');
+  // Only assert a loss pattern when the widest delta is a real gap (the
+  // "moderate" floor). A zero or negative widest delta means nothing was
+  // lost under compression, and the note would contradict the table above.
+  if (p.pressure.by_domain[widest].delta >= 8) {
+    L.push(`Your widest gap is in **${DOMAINS[widest].name}**. ${STATEMENTS.pressure_domain_note[widest]}`);
+    L.push('');
+  }
   L.push(`_${STATEMENTS.pressure_caveat}_`);
   L.push('');
 
@@ -399,6 +404,10 @@ function renderBrief(profile, subject = {}) {
   L.push('');
 
   L.push(`## Where the work is`);
+  L.push('');
+  // Frame before the list: exposure facets are the RELATIVE bottom three.
+  // Low means little evidence, not a fixed limit (second read, 16 Aug 2026).
+  L.push(`_${STATEMENTS.vulnerabilities._default}_`);
   L.push('');
   for (const f of p.exposure_facets) {
     L.push(`- **${facetLabel(f)}** — ${STATEMENTS.vulnerabilities[f] || STATEMENTS.vulnerabilities._default}`);

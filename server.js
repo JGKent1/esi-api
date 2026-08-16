@@ -46,7 +46,7 @@ app.get('/api/health', async (_req, res) => {
 
 // The instrument itself, minus every scoring vector. The coding vectors are
 // Core IP and must never reach the browser: strip them here, not in the client.
-app.get('/api/esi/instrument', limit(120), (_req, res) => {
+app.get('/api/esi/instrument', limit(Number(process.env.RATE_INSTRUMENT || 120)), (_req, res) => {
   const ITEMS = require('./esi_engine_data/esi_items_v1_0.json');
   res.json({
     instrument: ITEMS.instrument,
@@ -63,7 +63,7 @@ app.get('/api/esi/instrument', limit(120), (_req, res) => {
 
 // Does this link still work? Called before rendering the instrument so a spent
 // or expired token produces a clear message rather than a wasted 24 minutes.
-app.get('/api/esi/token', limit(60), async (req, res) => {
+app.get('/api/esi/token', limit(Number(process.env.RATE_TOKEN || 60)), async (req, res) => {
   const r = await tokens.inspectToken(store, req.query.t, nowIso());
   if (!r.ok) return res.status(410).json({ ok: false, reason: r.reason });
   res.json({
@@ -75,7 +75,7 @@ app.get('/api/esi/token', limit(60), async (req, res) => {
   });
 });
 
-app.post('/api/esi/submit', limit(20), async (req, res) => {
+app.post('/api/esi/submit', limit(Number(process.env.RATE_SUBMIT || 20)), async (req, res) => {
   const { t, responses } = req.body || {};
   try {
     // Validate BEFORE consuming the token. A malformed payload must not cost a
@@ -132,7 +132,7 @@ app.post('/api/esi/submit', limit(20), async (req, res) => {
 });
 
 // Depth responses: optional, interpretive only, never score-bearing.
-app.post('/api/esi/depth', limit(30), async (req, res) => {
+app.post('/api/esi/depth', limit(Number(process.env.RATE_DEPTH || 30)), async (req, res) => {
   const { submission_id, prompt_id, body } = req.body || {};
   if (!submission_id || !prompt_id || !body) {
     return res.status(400).json({ error: 'submission_id, prompt_id and body are required' });

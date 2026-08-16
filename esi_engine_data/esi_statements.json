@@ -1,19 +1,19 @@
 {
-  "bank_version": "esi_statements@0.1.0",
+  "bank_version": "esi_statements@0.2.0",
   "note": "Student statement bank for the ESI Brief. Release-safety rules apply: no clinical language, no verdicts, no career prediction, no 'at risk'. Every line addresses the student directly.",
   "band_note": "This is a starting position, not a verdict. You will take this again in Week 15, and the number that matters is what moved.",
   "pressure_intro": "Five scenarios were shown to you twice — once with time, information and privacy, and once with the clock running and people watching. The difference between how you answered is the gap between your judgment on the page and your judgment in the room. Closing that distance is what this term is for.",
   "pressure_readings": {
     "wide": "That is a wide gap, and it is the most useful thing this assessment can tell you. You reason well when you have room. The work of this term is making that reasoning survive conditions that do not give you room.",
-    "moderate": "That is a normal gap for someone at your stage, and it is workable. You lose some quality under compression but not all of it.",
-    "narrow": "That is a narrow gap, which is unusual. Your judgment holds up close to as well under pressure as it does with time. Protect that, and spend the term pushing the ceiling rather than the floor.",
-    "inverted": "Your compressed answers scored higher than your composed ones. That happens to people who overthink when given room. Worth a conversation — the fix is different from everyone else's."
+    "moderate": "That is the kind of gap we expect most students to arrive with, and it is workable. You lose some quality under compression but not all of it.",
+    "narrow": "That is a narrow gap. Your judgment holds up close to as well under pressure as it does with time. Protect that, and spend the term pushing the ceiling rather than the floor.",
+    "inverted": "Your compressed answers scored higher than your composed ones. Sometimes that means a person who overthinks when given room; at this sample size it can also just be noise. Either way it is worth a conversation, because the work for you is different from everyone else's."
   },
   "pressure_domain_note": {
     "LS": "Under compression, self-management is the first thing you lose. That usually shows up as reacting before you have registered what you are reacting to.",
     "LT": "Under compression, you handle people less well than you do with time. Speed comes out of the relationship rather than out of the task.",
     "LC": "Under compression, structure is the first thing you drop. You stop sequencing and start doing whatever is nearest.",
-    "LP": "Under compression, your decision discipline gives way. That is the gap that matters most in the work you say you want.",
+    "LP": "Under compression, your decision discipline gives way — and that is exactly the gap the Decision Labs exist to close.",
     "LF": "Under compression, you stop updating. New information that would have changed your mind with time stops landing."
   },
   "tendency_note": "None of these is better than its opposite. They describe how you currently default, not who you are — and at your stage a default is still forming.",
@@ -111,25 +111,25 @@
     "_default": "This came out low. Low here means little evidence, not a fixed limit — it is where the term's attention should go.",
     "ls.self_awareness": "Your read on yourself and other people's read on you are probably not the same document. Go find the difference; do not wait for it to find you.",
     "ls.emotional_regulation": "What you are feeling arrives in the room before you decide whether to send it. That is the most visible thing on this list to everyone but you.",
-    "ls.bias_recognition": "You are reasoning toward conclusions you already wanted. The tell is how rarely your analysis surprises you.",
+    "ls.bias_recognition": "The evidence here says your reasoning tends to arrive where you already wanted it to. The tell is how rarely your analysis surprises you.",
     "ls.discipline": "You start more than you finish. The cost is not the unfinished work — it is what people learn to expect.",
     "ls.operating_rhythm": "Your week has no protected time, so the first hard week takes everything with it.",
     "lt.trust_building": "People bring you problems late, once they are already everyone's problem. That is information about you, not about them.",
-    "lt.psychological_safety": "People are managing what they say around you. Quiet is not agreement.",
-    "lt.talent_judgment": "You read confidence as capability. They come apart at exactly the wrong moment.",
+    "lt.psychological_safety": "The signal here is that people may be managing what they say around you. Quiet is not agreement.",
+    "lt.talent_judgment": "You tend to read confidence as capability. They come apart at exactly the wrong moment.",
     "lt.communication": "People leave your conversations with different versions of what was decided. Say the decision out loud, last, in one sentence.",
     "lt.accountability": "You let things run past the point where saying something would have been easy. It never gets easier by waiting.",
     "lc.systems_thinking": "Your analysis stops at the person. The structure that produced the behaviour is where the fix is.",
     "lc.prioritization": "Everything is important, which means nothing is. Name what does not get done this week.",
     "lc.change_leadership": "You announce change and expect it to travel. Resistance is information about your plan.",
     "lc.enterprise_alignment": "You default to authority you do not have. Practise moving people who do not have to listen.",
-    "lc.governance": "Who decides what lives in your head. When you leave the room, it leaves with you.",
+    "lc.governance": "The map of who decides what lives only in your head. When you leave the room, it leaves with you.",
     "lp.judgment_under_stress": "Your reasoning degrades faster than you notice under pressure. The Decision Labs will show you this in a way no journal can.",
     "lp.ethical_clarity": "Your ethical reasoning bends under time pressure. Decide your line while it is cheap.",
     "lp.decision_architecture": "You commit without knowing what would make you stop. That is how good people ride bad decisions all the way down.",
     "lp.resilience": "One bad outcome costs you more than one day of quality. Watch the recovery, not the failure.",
     "lf.strategic_imagination": "You reason inside the situation as given. Practise asking what would have to be true for it to be different.",
-    "lf.ai_fluency": "You are either avoiding the tools or trusting them. Both are the same mistake at different volumes.",
+    "lf.ai_fluency": "You are either avoiding the tools or trusting them unchecked. Both are the same mistake at different volumes.",
     "lf.belief_revision": "New evidence rearranges your argument without changing your conclusion.",
     "lf.strategic_bets": "You wait for certainty that is not coming, or commit without naming what would make you stop.",
     "lf.adaptability": "When the plan breaks you keep executing it. Attachment to a plan is not commitment."
@@ -162,13 +162,13 @@
     "lf.adaptability": "Next time a plan breaks, re-plan within twenty-four hours instead of defending the original."
   },
   "lab_path": {
-    "LS": "PressureLab composure series, plus the Week 6 Reception Room. Your strongest domain is also where your gap under compression will show first.",
+    "LS": "PressureLab composure series, plus the Week 6 Reception Room. Your strongest domain is also where a gap under compression tends to show first.",
     "LT": "The Reception Room and the Week 9 peer correction round. Your instinct for people is real; the work is holding it when the room is difficult.",
-    "LC": "PressureLab triage series — compressed prioritization with two things failing at once. Structure is what you lose first under load.",
+    "LC": "PressureLab triage series — compressed prioritization with two things failing at once. Structure is your strongest suit; the triage series tests whether it holds when two things fail at once.",
     "LP": "PressureLab compressed-decision series and the Week 14 crisis lab. You are strong here on paper; the labs are where that gets tested.",
     "LF": "The Week 11 Devil's Advocate Brief and the Weighing Room. Your openness needs an adversarial setting to become a discipline rather than a temperament."
   },
-  "ethics_gate": "Your ethical clarity scored materially lower under compression than composed. That is the pattern the Weighing Room exists for, and it is worth a conversation before Week 5 rather than after.",
+  "ethics_gate": "Ethical clarity came out as one of the lowest signals in your profile across the scenarios that test it. That is the pattern the Weighing Room exists for, and it is worth a conversation before Week 5 rather than after.",
   "archetypes": {
     "_default": {
       "name": "The Builder",
