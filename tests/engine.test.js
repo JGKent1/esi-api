@@ -112,7 +112,7 @@ test('student weights are Self .25 Teams .20 Complexity .15 Pressure .25 Future 
 
 test('bands are the four student bands with the documented cuts', () => {
   assert.deepStrictEqual(E.BANDS.map((b) => [b.name, b.min]), [
-    ['Ready to Lead', 85], ['Ready with Support', 72], ['Developing', 58], ['Foundational', 0],
+    ['Ready to Lead', 85], ['Ready with Support', 72], ['Building', 58], ['Foundational', 0],
   ]);
 });
 

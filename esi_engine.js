@@ -44,7 +44,9 @@ const BANDS = Object.freeze([
     gloss: 'Judgment already holds under pressure and with people watching.' },
   { min: 72, name: 'Ready with Support',
     gloss: 'Sound judgment with identified conditions; ready for responsibility alongside a named support structure.' },
-  { min: 58, name: 'Developing',
+  // 'Building' — renamed from 'Developing' 17 Aug 2026: the Quality scoring
+  // card also has a 'Developing' band and students would fuse the two scales.
+  { min: 58, name: 'Building',
     gloss: 'Capable when conditions are favourable; inconsistent when they are not.' },
   { min: 0,  name: 'Foundational',
     gloss: 'Early. The building blocks are the work of this term. A starting line, not a verdict.' },
@@ -339,6 +341,13 @@ function renderBrief(profile, subject = {}) {
   L.push('---');
   L.push('');
 
+  // "How to read this" comes BEFORE the score: the scale floor is 25, and a
+  // student who reads 60.6 as 60% has read it as a D before any caveat below
+  // the number can catch them (adoption plan, 17 Aug 2026).
+  L.push(`## How to read this`);
+  L.push('');
+  for (const para of STATEMENTS.how_to_read) { L.push(para); L.push(''); }
+
   L.push(`## Where you are`);
   L.push('');
   L.push(`**Composite ${p.composite} — ${p.band.name}.** ${p.band.gloss}`);
@@ -402,6 +411,8 @@ function renderBrief(profile, subject = {}) {
 
   L.push(`### How you decide`);
   L.push('');
+  L.push(`_${STATEMENTS.tendency_source}_`);
+  L.push('');
   for (const [axis, t] of Object.entries(p.tendencies)) {
     L.push(`- ${STATEMENTS.tendency_lines[axis][t.level]}`);
   }
@@ -455,6 +466,8 @@ function renderBrief(profile, subject = {}) {
     L.push(`| **Your page-vs-room gap** in ${DOMAINS[watch].name} | ${pp.where} | ${pp.produce} | ${pp.watch} |`);
   }
   L.push('');
+  L.push(STATEMENTS.skeptical_line);
+  L.push('');
   L.push(`**${STATEMENTS.lab_path_label}** ${STATEMENTS.lab_path[p.signature_family]}`);
   if (p.facets['lp.ethical_clarity'].unit < 0.40) {
     L.push('');
@@ -469,6 +482,10 @@ function renderBrief(profile, subject = {}) {
   L.push(`**On your next team:** ${p.counterpart.partner}`);
   L.push('');
   L.push(STATEMENTS.closing_line);
+  L.push('');
+  L.push(`## How this was built`);
+  L.push('');
+  L.push(STATEMENTS.how_built);
   L.push('');
 
   L.push('---');

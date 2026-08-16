@@ -15,6 +15,18 @@
  * ──────────────────────────────────────────────────────────────────────────── */
 
 const PDFDocument = require('pdfkit');
+const path = require('path');
+
+// Embedded fonts (Liberation Sans, SIL OFL — metric-compatible with
+// Helvetica). Standard-14 Helvetica is NOT embedded by PDF viewers; a record
+// retained until December across 35 devices must carry its own glyphs.
+const FONT_DIR = path.join(__dirname, 'fonts');
+const F = {
+  reg: path.join(FONT_DIR, 'LiberationSans-Regular.ttf'),
+  bold: path.join(FONT_DIR, 'LiberationSans-Bold.ttf'),
+  ital: path.join(FONT_DIR, 'LiberationSans-Italic.ttf'),
+  boldital: path.join(FONT_DIR, 'LiberationSans-BoldItalic.ttf'),
+};
 
 const M = 54;                 // page margin (pt)
 const BODY = 10.5;            // body font size
@@ -39,10 +51,10 @@ function runs(text) {
 }
 
 function fontFor(r) {
-  if (r.b && r.i) return 'Helvetica-BoldOblique';
-  if (r.b) return 'Helvetica-Bold';
-  if (r.i) return 'Helvetica-Oblique';
-  return 'Helvetica';
+  if (r.b && r.i) return F.boldital;
+  if (r.b) return F.bold;
+  if (r.i) return F.ital;
+  return F.reg;
 }
 
 function inline(doc, text, opts = {}) {
@@ -85,7 +97,7 @@ function drawTable(doc, header, rows) {
 
   const FS = 9.5, PAD = 5;
   const rowHeight = (cells, bold) => {
-    doc.font(bold ? 'Helvetica-Bold' : 'Helvetica').fontSize(FS);
+    doc.font(bold ? F.bold : F.reg).fontSize(FS);
     let h = 0;
     cells.forEach((c, i) => {
       h = Math.max(h, doc.heightOfString(clean(c || ''), { width: widths[i] - PAD * 2 }));
@@ -101,12 +113,17 @@ function drawTable(doc, header, rows) {
       // Standard-14 fonts have no U+25CF/U+25CB glyphs — draw the direction
       // markers as vector circles instead of text.
       if (colType[i] === 'sym' && (v === '●' || v === '○')) {
+        // Decorative by design: the direction markers are marked as PDF
+        // artifacts so assistive tech skips them; the plain-language label
+        // column in the same row is the authoritative reading.
         const cx = x + widths[i] / 2, cy = y + PAD + FS / 2, r = 3.4;
+        if (typeof doc.markContent === 'function') doc.markContent('Artifact', { type: 'Layout' });
         if (v === '●') doc.circle(cx, cy, r).fillColor(INK).fill();
         else doc.circle(cx, cy, r).lineWidth(1).strokeColor(INK).stroke();
+        if (typeof doc.endMarkedContent === 'function') doc.endMarkedContent();
       } else {
         const cellBold = bold || (boldCells && /\*\*/.test(String(c || '')));
-        doc.font(cellBold ? 'Helvetica-Bold' : 'Helvetica').fontSize(FS).fillColor(INK)
+        doc.font(cellBold ? F.bold : F.reg).fontSize(FS).fillColor(INK)
           .text(v, x + PAD, y + PAD, {
             width: widths[i] - PAD * 2,
             align: colType[i] === 'num' ? 'right' : colType[i] === 'sym' ? 'center' : 'left',
@@ -140,7 +157,7 @@ function drawTable(doc, header, rows) {
 function watermark(doc) {
   doc.save();
   doc.rotate(-35, { origin: [doc.page.width / 2, doc.page.height / 2] });
-  doc.font('Helvetica-Bold').fontSize(52).fillColor('#c0392b').opacity(0.13)
+  doc.font(F.bold).fontSize(52).fillColor('#c0392b').opacity(0.13)
     .text('DRAFT — NOT RELEASED', 0, doc.page.height / 2 - 30,
       { width: doc.page.width, align: 'center' });
   doc.opacity(1).restore();
@@ -180,7 +197,7 @@ function renderBriefPdf(sub, out) {
       const sizes = { 1: 20, 2: 14.5, 3: 12 };
       ensureRoom(doc, sizes[level] * 2.2);
       doc.moveDown(level === 1 ? 0.1 : 0.5);
-      doc.font('Helvetica-Bold').fontSize(sizes[level]).fillColor(INK)
+      doc.font(F.bold).fontSize(sizes[level]).fillColor(INK)
         .text(h[2].replace(/\*\*/g, ''), { paragraphGap: 2 });
       doc.moveDown(0.2);
       i++; continue;
@@ -200,7 +217,7 @@ function renderBriefPdf(sub, out) {
     const bullet = line.match(/^-\s+(.*)$/);
     if (bullet) {
       ensureRoom(doc, 26);
-      doc.font('Helvetica').fontSize(BODY).fillColor(INK).text('•  ', M + 6, doc.y, { continued: true });
+      doc.font(F.reg).fontSize(BODY).fillColor(INK).text('•  ', M + 6, doc.y, { continued: true });
       inline(doc, bullet[1], { text: { paragraphGap: 3 } });
       doc.x = M;
       i++; continue;
@@ -209,7 +226,7 @@ function renderBriefPdf(sub, out) {
     const num = line.match(/^(\d+)\.\s+(.*)$/);
     if (num) {
       ensureRoom(doc, 26);
-      doc.font('Helvetica').fontSize(BODY).fillColor(INK).text(num[1] + '.  ', M + 6, doc.y, { continued: true });
+      doc.font(F.reg).fontSize(BODY).fillColor(INK).text(num[1] + '.  ', M + 6, doc.y, { continued: true });
       inline(doc, num[2], { text: { paragraphGap: 3 } });
       doc.x = M;
       i++; continue;
@@ -220,7 +237,7 @@ function renderBriefPdf(sub, out) {
     const wholeItalic = line.match(/^_(.*)_\s*$/);
     if (wholeItalic) {
       ensureRoom(doc, 26);
-      doc.font('Helvetica-Oblique').fontSize(9.5).fillColor(MUTED)
+      doc.font(F.ital).fontSize(9.5).fillColor(MUTED)
         .text(wholeItalic[1].replace(/\*\*/g, ''), { paragraphGap: 3 });
       i++; continue;
     }
@@ -243,7 +260,7 @@ function renderBriefPdf(sub, out) {
     const savedBottom = doc.page.margins.bottom;
     doc.page.margins.bottom = 0;
     if (!released) watermark(doc);
-    doc.font('Helvetica').fontSize(8).fillColor(MUTED)
+    doc.font(F.reg).fontSize(8).fillColor(MUTED)
       .text(`${sub.full_name || sub.student_ref} · ${sub.cohort} · ${sub.window === 'wk15' ? 'Week 13' : 'Day 0'} · ${stamp}`,
         M, doc.page.height - M + 14, { width: doc.page.width - M * 2 - 60, lineBreak: false })
       .text(`${p - range.start + 1} / ${range.count}`,

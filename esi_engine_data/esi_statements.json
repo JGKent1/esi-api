@@ -1,5 +1,5 @@
 {
-  "bank_version": "esi_statements@0.3.0",
+  "bank_version": "esi_statements@0.4.0",
   "note": "Student statement bank for the ESI Brief. Release-safety rules apply: no clinical language, no verdicts, no career prediction, no 'at risk'. Every line addresses the student directly.",
   "band_note": "This is a starting position, not a verdict. You will take this again in Week 13, and the number that matters is what moved.",
   "pressure_intro": "Five scenarios were shown to you twice — once with time, information and privacy, and once with the clock running and people watching. **Each domain rests on a single pair, so read these as direction, not distance.** What matters is which way the arrow points.",
@@ -22,7 +22,7 @@
       "pos_strong": "Strongly decisive: you close decisions fast and treat an unmade decision as its own cost.",
       "pos_mod": "Leans decisive: you would rather have a made decision than a perfect one.",
       "neg_mod": "Leans deliberate: you buy time and information before you commit.",
-      "neg_strong": "Strongly deliberate: your decisions wait for a complete picture, which is a strength until the picture will not arrive.",
+      "neg_strong": "Strongly deliberate: your decisions wait for a complete picture, which is a strength until the full picture is never coming.",
       "balanced": "Flexes between deliberate and decisive depending on the situation."
     },
     "information": {
@@ -33,18 +33,18 @@
       "balanced": "Blends analysis and instinct without a strong default."
     },
     "orientation": {
-      "pos_strong": "Strongly people-first: relationships are the unit of work, and you solve through them.",
+      "pos_strong": "Strongly people-first: relationships are how the work gets done, and you solve through them.",
       "pos_mod": "Leans people-first: you tend to solve problems through the people in them.",
       "neg_mod": "Leans task-first: the work leads and relationships support it.",
-      "neg_strong": "Strongly task-first: outcomes over feelings, visibly.",
+      "neg_strong": "Strongly task-first: the outcome comes first, and people can tell.",
       "balanced": "Moves between people and task depending on what the moment needs."
     },
     "risk": {
-      "pos_strong": "Strongly bold: you price the downside optimistically and move anyway.",
-      "pos_mod": "Leans bold: asymmetric upside pulls you harder than downside pushes you.",
+      "pos_strong": "Strongly bold: you tend to underweight what could go wrong, and move anyway.",
+      "pos_mod": "Leans bold: a big possible win moves you more than a possible loss holds you back.",
       "neg_mod": "Leans protective: you defend the downside first.",
       "neg_strong": "Strongly protective: an opportunity has to get past your defensive instinct before you will take it.",
-      "balanced": "Prices risk situationally, without a strong personal bias."
+      "balanced": "Weighs risk case by case, without a strong personal default."
     },
     "counsel": {
       "pos_strong": "Strongly collaborative: your decisions gather people before they close.",
@@ -273,7 +273,7 @@
       "partner": "Pair with the person who gets quieter as things get worse. Ask them to make the call when the room is loud."
     },
     "LF": {
-      "intro": "The complement you need is a Pathfinder — someone who is looking further out than the current problem.",
+      "intro": "The complement you need is a Pathfinder — someone who habitually looks past the current problem to the one after it.",
       "partner": "Pair with the person who keeps asking what happens after this. Ask them what you are not seeing before you lock the plan."
     }
   },
@@ -409,5 +409,13 @@
     "produce": "Three recorded compressed performances across the term",
     "watch": "Whether the gap closes by W13 — this is the headline number in your December readout"
   },
-  "lab_path_label": "Where your strength gets tested."
+  "lab_path_label": "Where your strength gets tested.",
+  "how_to_read": [
+    "**The scale runs 25 to 100, not 0 to 100.** Nobody scores zero, so this is not a percentage and it is not a grade. There is no passing mark. A 60 here is not a D — it is the middle of four bands.",
+    "**It comes from 38 questions you answered in about twenty minutes.** That is enough to start a conversation and nowhere near enough to describe a person. Where it is right, use it. Where it is wrong, that is worth knowing too — write down which part missed, and bring it to Week 9.",
+    "**Nothing here touches your grade.** Completing it earns credit. What it says does not."
+  ],
+  "how_built": "38 items — 28 scored against 24 facets grouped into 5 domains, and 5 scenarios shown twice under different conditions. Facet scores are averaged into domains; domains are weighted (0.25 / 0.25 / 0.20 / 0.15 / 0.15) into the composite. The narrative you just read is assembled from a fixed statement bank keyed to your lowest three facets and your highest three. **No part of this brief is written by a model at the time you read it** — the same answers always produce the same brief, word for word. The bands are provisional: they were set by judgment, not by data, and will be re-anchored once we have enough of it.",
+  "skeptical_line": "**Circle the row you are most skeptical about. Bring that circle to Week 9.**",
+  "tendency_source": "These come from how you traded off speed against certainty across the same 38 items."
 }
